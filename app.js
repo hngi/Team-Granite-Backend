@@ -12,13 +12,14 @@ app.use(express.json());
 
 app.get('/', (req, res) =>  res.json({msg:"Welcome to Dockerized User Management App"}));
 
-
+// Define Routes
+app.use('/users', require('./routes/users'))
 //testing mongoose connection
 // app.post('/createUser',(request,response) => {
 //     console.log(request.body);
-//
+
 //     const user = new User(request.body)
-//
+
 //     user.save().then(() => {
 //         response.send(user)
 //     }).catch((e) => {
