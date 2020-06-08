@@ -4,9 +4,8 @@
   "description": "Dockerized user management app",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "start:dev": "nodemon node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node -r esm app.js",
+    "dev": "nodemon app.js"
   },
   "author": "Team-Granite",
   "license": "ISC",
@@ -14,9 +13,12 @@
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
+    "helmet": "^3.22.0",
+    "mongodb": "^3.5.8",
     "mongoose": "^5.9.18",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "validator": "^13.0.0"
   }
 }
