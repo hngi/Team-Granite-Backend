@@ -9,7 +9,7 @@ const path = require("path");
  * App Variables
  */
 const app = express()
-const port = process.env.PORT || "8000";
+const port = process.env.PORT || "8080";
 /**
  *  App Configuration
  */
