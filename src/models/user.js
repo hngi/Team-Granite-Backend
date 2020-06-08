@@ -26,7 +26,7 @@ const User = mongoose.model('User', {
         }
     },
     phoneNumber: {
-        type: Number,
+        type: String,
         required: true,
         validate(value){
             if (value.length < 11 || value.length > 13){
