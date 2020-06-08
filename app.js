@@ -1,9 +1,16 @@
 const express =  require('express');
-
 const dotenv =  require('dotenv');
+const mongoose = require('mongoose');
 
 
-dotenv.config();
+// import environmental variables from our variables.env file
+dotenv.config({ path: 'variables.env' });
+
+// Connect to our Database and handle any bad connections
+mongoose.connect(process.env.DATABASE);
+mongoose.connection.on('error', (err) => {
+  console.error(`${err.message}`);
+});
 
 const app = express();
 const port = process.env.PORT || 5000;
