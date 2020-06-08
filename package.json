@@ -1,19 +1,20 @@
 {
-  "name": "newproject",
+  "name": "team-granite-task",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Dockerized user management app",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon ./index.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Team-Granite",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "pug": "^3.0.0"
+    "mongodb": "^3.5.8",
+    "mongoose": "^5.9.18",
+    "nodemon": "^2.0.4",
+    "validator": "^13.0.0"
   }
 }
