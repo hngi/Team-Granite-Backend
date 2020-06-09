@@ -4,7 +4,7 @@
   "description": "Dockerized user management app",
   "main": "app.js",
   "scripts": {
-    "start": "node -r esm app.js",
+    "start": "nodemon app.js",
     "dev": "nodemon app.js"
   },
   "author": "Team-Granite",
@@ -16,8 +16,10 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "helmet": "^3.22.0",
+    "http-errors": "^1.7.3",
     "mongodb": "^3.5.8",
     "mongoose": "^5.9.18",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "validator": "^13.0.0"
   }
