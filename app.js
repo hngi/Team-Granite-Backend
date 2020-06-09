@@ -7,6 +7,8 @@ import User from './src/models/user';
 dotenv.config();
 connectToDatabase();
 
+const routes = require('./src/routes/index');
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -14,9 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 
-app.get('/', (req, res) =>  {
-    res.status(200).json({ msg: "Welcome to Dockerized User Management App" });
-});
-
+// Adding our routes
+app.use('/', routes);
 
 app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));
