@@ -8,7 +8,7 @@ exports.getUsers = async(req, res) => {
 
 exports.createUser = async (req, res) => {
     const user = await (new User(req.body)).save();
-    res.status(200).send(user);
+    res.status(201).send(user);
 };
 
 exports.updateUser = async (req, res) => {
@@ -48,4 +48,9 @@ exports.getUserLastName = async (req, res) => {
 exports.setUserLastname = async (req, res) => {
     const user = await User.findOneAndUpdate({ _id: req.params.id }, {lastName : req.body.lastName});
     res.status(200).send(user);
+}
+
+exports.getUserEmail=async(req,res,next)=>{
+    const user = await User.findOne({_id:req.params.id});
+    res.status(200).send(user.email);
 }
