@@ -41,12 +41,31 @@ const User = mongoose.model('User', {
     },
     gender:{
         type: String,
-        class:"form-inline"
-        input type:"radio" name:"gender"
-        value:"Male"> Male
-        input type:"radio" name:"gender"
-        Value:"female">Female
+        required: true,
+        validate(value){
+            var genderM=form.gender_male;
+            var genderF=form.gender_female;
+
+            if(genderM.checked==false && genderF.checked==false){
+                alart("You must select male or female");
+                return false;
             }
+        }
+    },
+    status:{
+        type: String,
+        required: true,
+        validate(value){
+            var status=active;
+            var status=inactive;
+
+            if( status.checked==false && status.checked==false){
+                alart("You must select active or inactive");
+                return false;
+            }
+        }
+    },
+    
 })
 
 export default User;
