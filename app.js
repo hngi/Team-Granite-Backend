@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import connectToDatabase from './src/db/mongoose';
-import User from './src/models/user';
+import user from './src/models/user';
 
 dotenv.config();
 connectToDatabase();
