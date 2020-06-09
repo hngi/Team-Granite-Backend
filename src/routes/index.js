@@ -14,7 +14,7 @@ router.post('/users', catchErrors(userController.createUser));
 // Remove User using their ID
 router.delete('/user/:id', catchErrors(userController.removeUser));
 // Update User Info
-router.post('/user/:id', catchErrors(userController.updateUser));
+router.put('/user/:id', catchErrors(userController.updateUser));
 //Get Specific User
 router.get('/user/:id', catchErrors(userController.getUser));
 
@@ -22,7 +22,12 @@ router.get('/user/:id', catchErrors(userController.getUser));
 //Get First Name
 router.get('/users/firstname/:id', catchErrors(userController.getUserFirstName));
 //Set First Name
-router.post('/users/firstname/:id', catchErrors(userController.setUserFirstname));
+router.put('/users/firstname/:id', catchErrors(userController.setUserFirstname));
+
+//Get Last Name
+router.get('/users/lastname/:id', catchErrors(userController.getUserLastName));
+//Set Last Name
+router.put('/users/lastname/:id', catchErrors(userController.setUserLastname));
 
 
 module.exports = router
