@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 router.post('/user', newUser.addUser);
 
 //remove user
-router.delete('/user', newUser.removeUser);
+router.delete('/user/:id', newUser.removeUser);
 
 //Get users
 router.get('/users', newUser.getAllUsers);
