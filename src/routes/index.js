@@ -28,10 +28,9 @@ router.put('/users/:id/firstname', catchErrors(userController.setUserFirstname))
 router.get('/users/:id/lastname', catchErrors(userController.getUserLastName));
 //Set Last Name
 router.put('/users/:id/lastname', catchErrors(userController.setUserLastname));
-<<<<<<< Updated upstream
+
 // GET Specific User Emai;
 router.get('/user/:id/email', catchErrors(userController.getUserEmail));
-=======
 
 //Get Phone number
 router.get('/users/:id/phone', catchErrors(userController.getphone));
