@@ -44,6 +44,7 @@ const User = mongoose.model('User', {
         class:"form-inline"
         input type:"radio" name:"gender"
         value:"Male"> Male
+        input type:"radio" name:"gender"
         Value:"female">Female
             }
 })
