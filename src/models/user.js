@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import validator from 'validator';
+const mongoose = require('mongoose');
+const validator = require('validator');
 
 
 const User = mongoose.model('User', {
@@ -41,16 +41,22 @@ const User = mongoose.model('User', {
     },
     gender: {
         type: String,
-        enum: ['male', 'female']
+        enum: ['male', 'female'],
         required: true,
         trim: true
     },
     status: {
         type: String,
-        enum: ['active', 'inactive']
+        enum: ['active', 'inactive'],
         required: true,
         trim: true
+    },
+    address: {
+         type: String,
     }
 })
 
 export default User;
+
+
+module.exports = User;
