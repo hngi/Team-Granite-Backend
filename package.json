@@ -10,6 +10,8 @@
   "author": "Team-Granite",
   "license": "ISC",
   "dependencies": {
+    "@types/express": "^4.17.6",
+    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
@@ -18,5 +20,13 @@
     "mongoose": "^5.9.18",
     "nodemon": "^2.0.4",
     "validator": "^13.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EkeneFidel/Team-Granite-Backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EkeneFidel/Team-Granite-Backend/issues"
+  },
+  "homepage": "https://github.com/EkeneFidel/Team-Granite-Backend#readme"
 }
