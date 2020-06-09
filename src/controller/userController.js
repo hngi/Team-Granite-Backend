@@ -8,7 +8,7 @@ exports.getUsers = async(req, res) => {
 
 exports.createUser = async (req, res) => {
     const user = await (new User(req.body)).save();
-    res.status(200).send(user);
+    res.status(201).send(user);
 };
 
 exports.updateUser = async (req, res) => {
