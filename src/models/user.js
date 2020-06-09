@@ -38,7 +38,14 @@ const User = mongoose.model('User', {
     age: {
         type: Number,
         default: 0
-    }
+    },
+    gender:{
+        type: String,
+        class:"form-inline"
+        input type:"radio" name:"gender"
+        value:"Male"> Male
+        Value:"female">Female
+            }
 })
 
 export default User;
