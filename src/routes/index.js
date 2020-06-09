@@ -20,14 +20,14 @@ router.get('/user/:id', catchErrors(userController.getUser));
 
 // More Routes
 //Get First Name
-router.get('/users/firstname/:id', catchErrors(userController.getUserFirstName));
+router.get('/users/:id/firstname', catchErrors(userController.getUserFirstName));
 //Set First Name
-router.put('/users/firstname/:id', catchErrors(userController.setUserFirstname));
+router.put('/users/:id/firstname', catchErrors(userController.setUserFirstname));
 
 //Get Last Name
-router.get('/users/lastname/:id', catchErrors(userController.getUserLastName));
+router.get('/users/:id/lastname', catchErrors(userController.getUserLastName));
 //Set Last Name
-router.put('/users/lastname/:id', catchErrors(userController.setUserLastname));
+router.put('/users/:id/lastname', catchErrors(userController.setUserLastname));
 
 
 module.exports = router
