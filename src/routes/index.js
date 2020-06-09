@@ -30,5 +30,7 @@ router.get('/users/:id/lastname', catchErrors(userController.getUserLastName));
 router.put('/users/:id/lastname', catchErrors(userController.setUserLastname));
 // GET Specific User Emai;
 router.get('/user/:id/email', catchErrors(userController.getUserEmail));
+// Get user gender
+router.get('/users/:id/gender', catchErrors(userController.getUserGender));
 
 module.exports = router

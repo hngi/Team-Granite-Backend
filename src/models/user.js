@@ -18,12 +18,7 @@ const User = mongoose.model('User', {
         required: true,
         trim: true,
         lowercase: true,
-        validate(value){
-            if (!validator.isEmail(value)){
-                //subject to change to a custom response later
-                throw new Error('Invalid Email');
-            }
-        }
+        
     },
     phoneNumber: {
         type: String,
@@ -38,6 +33,12 @@ const User = mongoose.model('User', {
     age: {
         type: Number,
         default: 0
+    },
+    gender: {
+        type: String,
+        required: true,
+        trim: true,
+        
     }
 })
 

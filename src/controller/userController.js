@@ -54,3 +54,8 @@ exports.getUserEmail=async(req,res,next)=>{
     const user = await User.findOne({_id:req.params.id});
     res.status(200).send(user.email);
 }
+
+exports.getUserGender = async(req,res,next)=>{
+    const user = await User.findOne({_id:req.params.id});
+    res.status(200).send(user.gender);
+}
