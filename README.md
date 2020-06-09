@@ -4,7 +4,7 @@ A Dockerized User Management App
 ## Run the App: 
 - Fork this repository
 - Clone to your local machine
-- `cd` into the repository and run `npm start`
+- `cd` into the repository and run `npm install && npm start`
 - The app will be running on `localhost:5000`
 
 ## Contribute guide
