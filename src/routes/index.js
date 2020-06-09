@@ -1,42 +1,36 @@
 const express = require("express");
-const session = require('express-session');
-const userController = require('../controller/userController');
-const auth = require('../handlers/auth');
-
 const router = express.Router();
-router.use(session({
-  secret: 'team-granite backend',
-  resave: false,
-  saveUninitialized: false
-}));
-
+const userController = require('../controller/userController');
+const { catchErrors } = require('../handlers/errorHandlers');
 
 router.get('/', (req, res) => {
-  res.render('index', { title: " Dockerized User Management App" });
-});
+    res.status(200).json({ msg: "Welcome to Dockerized User Management App" });
+})
 
-//Get All Users. Later, only user.isAdmin can access this route
-router.get('/users', userController.getUsers)
-
+//Get All Users
+router.get('/users', catchErrors(userController.getUsers))
 // Add User
-router.post('/users', userController.createUser);
-router.post('/login', userController.login);
-
-//Get the current logged in User [must be logged in]
-router.get('/user', auth, userController.getUser);
-// Update profile Info [must be logged in first]
-router.post('/user', auth, userController.updateUser);
-//loggout [must have been logged in]
-router.get('/logout', auth, userController.logout);
-// Remove User using their ID, [admin only]
-router.delete('/user/:id', auth, userController.removeUser);
-
+router.post('/users', catchErrors(userController.createUser));
+// Remove User using their ID
+router.delete('/user/:id', catchErrors(userController.removeUser));
+// Update User Info
+router.put('/user/:id', catchErrors(userController.updateUser));
+//Get Specific User
+router.get('/user/:id', catchErrors(userController.getUser));
 
 // More Routes
-//Get First Name [must be logged in]
-router.get('/users/firstname/', auth, userController.getUserFirstName);
-//Set First Name [must be logged in]
-router.post('/users/firstname/', auth, userController.setUserFirstname);
+//Get First Name
+router.get('/users/:id/firstname', catchErrors(userController.getUserFirstName));
+//Set First Name
+router.put('/users/:id/firstname', catchErrors(userController.setUserFirstname));
+
+//Get Last Name
+router.get('/users/:id/lastname', catchErrors(userController.getUserLastName));
+//Set Last Name
+router.put('/users/:id/lastname', catchErrors(userController.setUserLastname));
+
+//Set Email
+router.post('/users/:id/email', catchErrors(userController.setUserEmail));
 
 
 module.exports = router
