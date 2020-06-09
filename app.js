@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import helmet from 'helmet';
 import connectToDatabase from './src/db/mongoose';
 import User from './src/models/user';
+import errorHandler from './src/middleware/handleErrors'
 
 dotenv.config();
 connectToDatabase();
@@ -18,5 +19,6 @@ app.use(helmet());
 
 // Adding our routes
 app.use('/', routes);
+app.use(errorHandler)
 
 app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));
