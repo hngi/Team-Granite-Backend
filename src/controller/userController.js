@@ -55,13 +55,13 @@ exports.getUserEmail=async(req,res,next)=>{
     res.status(200).send(user.email);
 }
 
-exports.getphoneNumber = async (req, res) => {
+exports.getphone = async (req, res) => {
     const user = await User.findOne({ _id: req.params.id });
-    res.status(200).send(user.phoneNumber);
+    res.status(200).send(user.phone);
 }
 
-exports.setphoneNumber = async (req, res) => {
-    const user = await User.findOneAndUpdate({ _id: req.params.id }, {phoneNumber : req.body.phoneNumber});
+exports.setphone = async (req, res) => {
+    const user = await User.findOneAndUpdate({ _id: req.params.id }, {phone : req.body.phone});
     res.status(200).send(user);
 }
 
