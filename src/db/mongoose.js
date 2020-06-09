@@ -6,6 +6,7 @@ const connectToDatabase = () => {
         useNewUrlParser: true,
         useCreateIndex: true
     });
+    console.log('Database connected successfully');
 };
 
 export default connectToDatabase;
