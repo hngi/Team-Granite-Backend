@@ -2,8 +2,7 @@ const mongoose = require('mongoose')
 
 const connectToDatabase = () => {
   mongoose.connect(
-    'mongodb+srv://sonnie:cross2017@cluster0-bwhpt.gcp.mongodb.net/sdg?retryWrites=true&w=majority',
-    //"mongodb://team-granite:granite1@ds047065.mlab.com:47065/team-granit",
+    "mongodb://team-granite:granite1@ds047065.mlab.com:47065/team-granit",
     {
       useUnifiedTopology: true,
       useNewUrlParser: true,
