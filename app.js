@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import connectToDatabase from './src/db/mongoose';
 import User from './src/models/user';
 import swaggerOptions from "./swagger";
+const openApiDocumentation = require('./src/openApiDocumentation')
 const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
 
@@ -17,7 +18,7 @@ connectToDatabase();
 const routes = require('./src/routes/index');
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
