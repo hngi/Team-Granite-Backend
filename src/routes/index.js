@@ -28,6 +28,7 @@ router.put('/users/:id/firstname', catchErrors(userController.setUserFirstname))
 router.get('/users/:id/lastname', catchErrors(userController.getUserLastName));
 //Set Last Name
 router.put('/users/:id/lastname', catchErrors(userController.setUserLastname));
-
+// GET Specific User Emai;
+router.get('/user/:id/email', catchErrors(userController.getUserEmail));
 
 module.exports = router
