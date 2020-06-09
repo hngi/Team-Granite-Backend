@@ -10,9 +10,11 @@
   "author": "Team-Granite",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "helmet": "^3.22.0",
     "mongodb": "^3.5.8",
     "mongoose": "^5.9.18",

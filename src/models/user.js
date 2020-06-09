@@ -38,7 +38,15 @@ const User = mongoose.model('User', {
     age: {
         type: Number,
         default: 0
-    }
+    },
+    password: {
+        type: String,
+        minglength: 6
+      },
+      role: {
+        type: Number,
+        default: 0
+      },
 })
 
 export default User;
