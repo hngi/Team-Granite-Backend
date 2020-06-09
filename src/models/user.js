@@ -25,7 +25,7 @@ const User = mongoose.model('User', {
             }
         }
     },
-    phoneNumber: {
+    phone: {
         type: String,
         required: true,
         validate(value){
