@@ -7,6 +7,9 @@ const connectToDatabase = () => {
         useCreateIndex: true,
         useFindAndModify: false
     });
+
+    console.log('Database connected successfully');
+
     mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 };
 
