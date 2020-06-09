@@ -50,12 +50,11 @@ exports.setUserLastname = async (req, res) => {
     res.status(200).send(user);
 }
 
-<<<<<<< Updated upstream
 exports.getUserEmail=async(req,res,next)=>{
     const user = await User.findOne({_id:req.params.id});
     res.status(200).send(user.email);
 }
-=======
+
 exports.getphoneNumber = async (req, res) => {
     const user = await User.findOne({ _id: req.params.id });
     res.status(200).send(user.phoneNumber);
@@ -84,4 +83,3 @@ exports.getgender = async (req, res) => {
 exports.setgender = async (req, res) => {
     const user = await User.findOneAndUpdate({ _id: req.params.id }, {gender : req.body.gender});
     res.status(200).send(user);
->>>>>>> Stashed changes
