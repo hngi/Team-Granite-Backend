@@ -28,7 +28,26 @@ router.put('/users/:id/firstname', catchErrors(userController.setUserFirstname))
 router.get('/users/:id/lastname', catchErrors(userController.getUserLastName));
 //Set Last Name
 router.put('/users/:id/lastname', catchErrors(userController.setUserLastname));
+<<<<<<< Updated upstream
 // GET Specific User Emai;
 router.get('/user/:id/email', catchErrors(userController.getUserEmail));
+=======
+
+//Get Phone number
+router.get('/users/:id/phoneNumber', catchErrors(userController.getphoneNumber));
+//Set phone number
+router.put('/users/:id/phoneNumber', catchErrors(userController.setphoneNumber));
+
+//Get Age
+router.get('/users/:id/age', catchErrors(userController.getage));
+//Set age
+router.put('/users/:id/age', catchErrors(userController.setage));
+
+//Get Gender
+router.get('/users/:id/gender', catchErrors(userController.getgender));
+//Set gender
+router.put('/users/:id/gender', catchErrors(userController.setgender));
+
+>>>>>>> Stashed changes
 
 module.exports = router

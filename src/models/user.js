@@ -38,6 +38,18 @@ const User = mongoose.model('User', {
     age: {
         type: Number,
         default: 0
+    },
+    gender: {
+        type: String,
+        enum: ['male', 'female']
+        required: true,
+        trim: true
+    },
+    status: {
+        type: String,
+        enum: ['active', 'inactive']
+        required: true,
+        trim: true
     }
 })
 
