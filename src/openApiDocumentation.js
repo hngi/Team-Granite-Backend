@@ -21,7 +21,7 @@ const openApiDocumentation = {
         }
     ],
     paths: {
-        '/getAllUsers': {
+        '/users': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get All Users',
@@ -44,7 +44,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/addUser': {
+        '/user': {
             post:{
                 tags: ['CRUD Operations'],
                 description: 'Add new User',
@@ -77,7 +77,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/deleteUser/{id}': {
+        '/user/{id}': {
             delete: {
                 tags: ['CRUD Operations'],
                 description: 'Delete User',
@@ -92,24 +92,22 @@ const openApiDocumentation = {
                         required: true,
                     }
                 ],
-            },
-            responses: {
-                '200': {
-                    description: 'Success',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                type: 'string'
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    type: 'string'
+                                },
                             },
                         },
                     },
-                },
-                '400': {
-                    description: 'Bad Request',
+                    '400': {
+                        description: 'Bad Request',
+                    }
                 }
-            }
-        },
-        '/updateUser/{id}': {
+            },
             put: {
                 tags: ['CRUD Operations'],
                 description: 'Update User',
@@ -124,24 +122,22 @@ const openApiDocumentation = {
                         required: true,
                     }
                 ],
-            },
-            responses: {
-                '200': {
-                    description: 'Success',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                type: 'string'
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    type: 'string'
+                                },
                             },
                         },
                     },
-                },
-                '400': {
-                    description: 'Bad Request',
+                    '400': {
+                        description: 'Bad Request',
+                    }
                 }
-            }
-        },
-        '/getUser/{id}': {
+            },
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User',
@@ -156,24 +152,24 @@ const openApiDocumentation = {
                         required: true,
                     }
                 ],
-            },
-            responses: {
-                '200': {
-                    description: 'Success',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                type: 'string'
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    type: 'string'
+                                },
                             },
                         },
                     },
-                },
-                '400': {
-                    description: 'Bad Request',
+                    '400': {
+                        description: 'Bad Request',
+                    }
                 }
-            }
+            },
         },
-        '/getUserFirstName/{id}/firstName': {
+        '/users/{id}/firstName': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User First Name',

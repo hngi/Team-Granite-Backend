@@ -10,27 +10,48 @@ router.get('/', (req, res) => {
 })
 
 //Get All Users
-router.get('/getAllUsers', catchErrors(userController.getUsers))
+router.get('/users', catchErrors(userController.getUsers));
 
 //Add User
-router.post('/addUser', catchErrors(userController.createUser));
+router.post('/user', catchErrors(userController.createUser));
+
+
+
 // Remove User using their ID
-router.delete('/deleteUser/:id', catchErrors(userController.removeUser));
+router.delete('/user/:id', catchErrors(userController.removeUser));
+
+
 // Update User Info
-router.put('/updateUser/:id', catchErrors(userController.updateUser));
+router.put('/user/:id', catchErrors(userController.updateUser));
+
+
 //Get Specific User
-router.get('/getUser/:id', catchErrors(userController.getUser));
+router.get('/user/:id', catchErrors(userController.getUser));
+
+
+// Update User Info
+router.put('/users/:id', catchErrors(userController.updateUser));
+
+
+//Get Specific User
+router.get('/users/:id', catchErrors(userController.getUser));
 
 // More Routes
 //Get First Name
-router.get('/getUserFirstName/:id/firstName', catchErrors(userController.getUserFirstName));
+router.get('/users/:id/firstName', catchErrors(userController.getUserFirstName));
+
+
 //Set First Name
-router.put('/setUserFirstName/:id/firstName', catchErrors(userController.setUserFirstname));
+router.put('/users/:id/firstName', catchErrors(userController.setUserFirstname));
 
 //Get Last Name
-router.get('/getUserLastName/:id/lastName', catchErrors(userController.getUserLastName));
-//Set Last Name
-router.put('/setUserLastName/:id/lastName', catchErrors(userController.setUserLastname));
+router.get('/users/:id/lastName', catchErrors(userController.getUserLastName));
 
+
+//Set Last Name
+router.put('/users/:id/lastName', catchErrors(userController.setUserLastname));
+
+// GET Specific User Emai;
+router.get('/user/:id/email', catchErrors(userController.getUserEmail));
 
 module.exports = router
