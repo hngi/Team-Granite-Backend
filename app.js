@@ -1,19 +1,27 @@
 const express =  require('express');
-require('./src/db/mongoose')
-const User = require('./src/models/user')
+const connectDB = require('./src/db/mongoose');
+const User = require('./src/models/user');
 const dotenv =  require('dotenv');
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5000;
 
-app.use(express.json());
+// Connect to DB
+connectDB();
 
-app.get('/', (req, res) =>  res.json({msg:"Welcome to Dockerized User Management App"}));
+//Middleware
+app.use(express.json({ extended: false }))
 
-// Define Routes
-app.use('/users', require('./routes/users'))
+// app.use(express.json());
+
+app.get('/', (req, res) =>  
+  res.json({msg:"Welcome to Dockerized User Management App"}));
+
+// Defined Routes
+app.use('/users', require('./routes/users'));
+// app.use('/auth', require('./routes/auth'));
+
 //testing mongoose connection
 // app.post('/createUser',(request,response) => {
 //     console.log(request.body);
@@ -27,5 +35,6 @@ app.use('/users', require('./routes/users'))
 //     })
 // })
 
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));

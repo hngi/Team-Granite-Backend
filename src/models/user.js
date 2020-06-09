@@ -38,7 +38,11 @@ const User = mongoose.model('User', {
     age: {
         type: Number,
         default: 0
-    }
-})
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+});
 
 module.exports = User
