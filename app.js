@@ -3,15 +3,21 @@ import dotenv from 'dotenv';
 import helmet from 'helmet';
 import connectToDatabase from './src/db/mongoose';
 import User from './src/models/user';
-
-dotenv.config();
-connectToDatabase();
-
-const routes = require('./src/routes/index');
+import swaggerOptions from "./swagger";
+const swaggerJsDoc = require('swagger-jsdoc')
+const swaggerUi = require('swagger-ui-express')
 
 const app = express();
 const port = process.env.PORT || 5000;
 
+dotenv.config();
+connectToDatabase();
+
+
+const routes = require('./src/routes/index');
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());

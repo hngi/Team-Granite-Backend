@@ -3,13 +3,35 @@ const router = express.Router();
 const userController = require('../controller/userController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
+
+
 router.get('/', (req, res) => {
     res.status(200).json({ msg: "Welcome to Dockerized User Management App" });
 })
 
-//Get All Users
+
+/**
+ * @swagger
+ * /users:
+ *  get:
+ *   description: Get All Users
+ *   responses:
+ *    '200':
+ *     description: Success
+ *
+ */
 router.get('/users', catchErrors(userController.getUsers))
-// Add User
+
+
+/**
+ * @swagger
+ * /users:
+ *  post:
+ *   description: Add User
+ *   responses:
+ *    '201':
+ *     description: Success
+ */
 router.post('/users', catchErrors(userController.createUser));
 // Remove User using their ID
 router.delete('/user/:id', catchErrors(userController.removeUser));
