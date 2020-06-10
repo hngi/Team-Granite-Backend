@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import validator from 'validator';
+const mongoose = require('mongoose');
+const validator = require('validator');
 
 
 const User = mongoose.model('User', {
@@ -47,7 +47,20 @@ const User = mongoose.model('User', {
                 throw new Error('Age must be a positive number')
             }
 		}
+    },
+    address: {
+        type: String,
+        trim: true,
+    },
+    gender: { 
+        type: String,
+        enum: ['male', 'female'],
+        required: true
+    },
+    status: { 
+        type: String,
+        required: true
     }
-})
+});
 
-export default User;
+module.exports = User;
