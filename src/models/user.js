@@ -26,7 +26,7 @@ const User = mongoose.model('User', {
             }
         }
     },
-    phoneNumber: {
+    phone: {
         type: String,
         required: true,
         validate(value){
@@ -40,11 +40,17 @@ const User = mongoose.model('User', {
         }
     },
     age: {
-        type: Number,
+        type: String,
         default: 0,
         validate(value){
 			if(value < 0) {
-                throw new Error('Age must be a positive number')
+                throw new Error('Age must be a positive number');
+            }
+            // if(typeof value != 'Number') {
+            // 	throw new Error('Age must be a number');
+            // }
+            if(/[^\d]/.test(value)){
+                throw new Error('One or more invalid characters. Numbers only');
             }
 		}
     },

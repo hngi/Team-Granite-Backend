@@ -19,11 +19,11 @@ const user = {
         })
     },
     addUser: (req, res) => {
-        const { firstName, lastName, email, phoneNumber, age, status, address, gender } = req.body;
-        const newUser = new userModel({firstName, lastName, email, phoneNumber, age, status, address, gender});
-        newUser.save().then(() => res.json('New user created!')).catch( err => res.status(400).json('error: ' + err));
+        const { firstName, lastName, email, phone, age, status, address, gender } = req.body;
+        const newUser = new userModel({firstName, lastName, email, phone, age, status, address, gender});
+        newUser.save().then(() => res.json([{'Message': 'New user created!', 'Status': 'Success'}]))
+        .catch( err => res.status(400).json([{'Message': 'Error: ' + err, 'Status': 'Failed'}]));
     },
-
     setUserFirstName: async (req, res) => {
         const user = await userModel.findOneAndUpdate({ _id: req.params.id }, {firstName : req.body.firstName});
         res.status(200).send(user);
@@ -44,7 +44,7 @@ const user = {
     setUserPhone: (req, res) =>{
         const {phone} = req.body;
         userModel.findOne({_id: req.params.id}).then(user =>{
-            user.phoneNumber = phone;
+            user.phone = phone;
             user.save().then(()=> res.status(200).json('Phone Number updated!'))
             .catch((err) => res.status(400).json('err:' + err));
         }).catch((err) => res.status(400).json('err:' + err));
