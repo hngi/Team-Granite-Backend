@@ -59,8 +59,13 @@ const User = mongoose.model('User', {
     },
     status: { 
         type: String,
+<<<<<<< HEAD
         enum: ['active', 'inactive'],
         required: true
+=======
+        enum: ['ACTIVE', 'INACTIVE'],
+        default: 'ACTIVE'
+>>>>>>> upstream/master
     }
 });
 
