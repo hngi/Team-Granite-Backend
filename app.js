@@ -1,22 +1,17 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import helmet from 'helmet';
-import connectToDatabase from './src/db/mongoose';
-import User from './src/models/user';
+require('dotenv').config()
 
-dotenv.config();
-connectToDatabase();
+const express = require('express')
+const app = express()
+const mongoose = require('mongoose')
 
-const routes = require('./src/routes/index');
+mongoose.connect('mongodb://localhost/users', {useNewUrlParser: true})
+const db = mongoose.connection
+db.on('error', (error) => console.error(error))
+db.once('open', () => console.log('connected to database'))
 
-const app = express();
-const port = process.env.PORT || 5000;
+app.use(express.json())
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(helmet());
+const usersRouter = require('./routes/users')
+app.use('/users', usersRouter)
 
-// Adding our routes
-app.use('/', routes);
-
-app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));
+app.listen(3000, () => console.log('server started'))
