@@ -8,14 +8,14 @@ const user = {
 
     getAllUsers: (req, res) => {
         userModel.find()
-          .then((users) => res.json({'Status': 'Success', 'Message': 'User list retreived!', 'Data': users}))
-          .catch(err => res.status(400).json('Error:'`${err}`));
+          .then((users) => res.json({status: 'Success', message: 'List of Users', data: users}))
+          .catch(err => res.status(400).json({status: 'Failed', message: err, data: null}));
     },
     getUser: (req, res) => {
        userModel.findById(req.params.id).then((user) => {
-            res.json(user)
+            res.json({status: 'Success', message: 'User Details', data: user})
         }).catch((err) => {
-            res.status(400).json('Error:'`${err}`)
+            res.status(400).json({status: 'Failed', message: err, data: null})
         })
     },
     addUser: (req, res) => {
