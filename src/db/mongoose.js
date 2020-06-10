@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-
+// import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const connectToDatabase = () => {
     mongoose.connect('mongodb://127.0.0.1:27017/Team-Granite-Dockerized-Users-Management-App-db',{
         useUnifiedTopology: true,
@@ -14,5 +14,5 @@ const connectToDatabase = () => {
 };
 
 // mongodb://team-granite:granite1@ds047065.mlab.com:47065/team-granite
-
-export default connectToDatabase;
+module.exports = connectToDatabase;
+// export default connectToDatabase;
