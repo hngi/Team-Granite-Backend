@@ -8,7 +8,7 @@ COPY package*.json ./
 
 USER node
 
-RUN npm install && npm install --save swagger-ui-express
+RUN npm install
 
 COPY --chown=node:node . .
 
