@@ -26,9 +26,9 @@ const user = {
         const user = await userModel.findOneAndUpdate({ _id: req.params.id }, {lastName : req.body.lastName});
         res.status(200).send(user);
     },
-    setUserEmail: (req, res) =>{
+    setUserEmail: async (req, res) =>{
         const {email} = req.body;
-        userModel.findOne({_id: req.params.id}).then(user =>{
+        await userModel.findOne({_id: req.params.id}).then(user =>{
             user.email = email;
             user.save().then(()=> res.status(200).json('Email updated!'))
             .catch((err) => res.status(400).json('err:' + err));
