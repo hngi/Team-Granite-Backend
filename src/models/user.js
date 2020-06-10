@@ -50,7 +50,8 @@ const User = mongoose.model('User', {
     },
     status: { 
         type: String,
-        required: true
+        enum: ['ACTIVE', 'INACTIVE'],
+        default: 'ACTIVE'
     }
 });
 
