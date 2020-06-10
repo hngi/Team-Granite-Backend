@@ -26,7 +26,7 @@ const UserSchema = new Schema({
             }
         }
     },
-    phoneNumber: {
+    phone: {
         type: String,
         required: true,
         validate(value){
@@ -40,11 +40,11 @@ const UserSchema = new Schema({
         }
     },
     age: {
-        type: Number,
+        type: String,
         default: 0,
         validate(value){
 			if(value < 0) {
-                throw new Error('Age must be a positive number')
+                throw new Error('Age must be a positive number');
             }
 		}
     },
