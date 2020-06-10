@@ -1,0 +1,5 @@
+{
+    "exec": "npm run start",
+    "watch": ["**/*"],
+    "ext": "js, html, css, json"
+  }

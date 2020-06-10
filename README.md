@@ -6,6 +6,7 @@ A Dockerized User Management App
 - Clone to your local machine
 - `cd` into the repository and run `npm install && npm start`
 - The app will be running on `localhost:5000`
+- View the documentation at `localhost:5000/api-docs`
 
 ## Contribute guide
 If you're in team-granite-backend:

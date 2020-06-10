@@ -10,6 +10,8 @@
   "author": "Team-Granite",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
@@ -17,6 +19,8 @@
     "mongodb": "^3.5.8",
     "mongoose": "^5.9.18",
     "nodemon": "^2.0.4",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.4",
     "validator": "^13.0.0"
   }
 }
