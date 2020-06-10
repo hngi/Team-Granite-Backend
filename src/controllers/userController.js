@@ -10,7 +10,14 @@ const user = {
         userModel.find()
           .then((users) => res.json(users))
           .catch(err => res.status(400).json('Error:'`${err}`));
-      },
+    },
+    getUser: (req, res) => {
+        userModel.findById(req.params.id).then((user) => {
+            res.json(user)
+        }).catch((err) => {
+            res.status(400).json('Error:'`${err}`)
+        })
+    },
     addUser: (req, res) => {
         const { firstName, lastName, email, phoneNumber, age, status, address, gender } = req.body;
         const newUser = new userModel({firstName, lastName, email, phoneNumber, age, status, address, gender});

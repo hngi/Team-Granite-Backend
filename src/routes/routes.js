@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const newUser = require('../controllers/user');
+const newUser = require('../controllers/userController');
 
 router.get('/', (req, res) => {
     
@@ -16,23 +16,26 @@ router.post('/user', newUser.addUser);
 //remove user
 router.delete('/user/:id', newUser.removeUser);
 
-//Get users
+//Get All users
 router.get('/users', newUser.getAllUsers);
 
+//Get User
+router.get('/user/:id', newUser.getUser);
+
 //Get first name
-router.get('/users/:id/firstname', newUser.getUserFirstName);
+router.get('/users/:id/firstName', newUser.getUserFirstName);
 
 //Set first name
-router.put('/users/:id/firstname', newUser.setUserFirstName);
+router.put('/users/:id/firstName', newUser.setUserFirstName);
 
 //Get last name
-router.get('/users/:id/lastname', newUser.getUserLastName);
+router.get('/users/:id/lastName', newUser.getUserLastName);
 
 //Set last name
-router.put('/users/:id/lastname', newUser.setUserLastName);
+router.put('/users/:id/lastName', newUser.setUserLastName);
 
 //Get user email
-router.get('/users/:id/lastname', newUser.getUserEmail);
+router.get('/users/:id/email', newUser.getUserEmail);
 
 //set user email
 router.put('/users/:id/email', newUser.setUserEmail);
@@ -65,7 +68,7 @@ router.put('/users/:id/gender', newUser.setUserGender);
 router.put('/users/:id/address', newUser.setUserAddress);
 
 //get user address
-router.get('/users/:id/address', newUser.setUserAddress);
+router.get('/users/:id/address', newUser.getUserAddress);
 
 
 module.exports= router;
