@@ -70,5 +70,10 @@ router.put('/users/:id/address', newUser.setUserAddress);
 //get user address
 router.get('/users/:id/address', newUser.getUserAddress);
 
+//get active users
+router.get('/users/status/active', newUser.getActiveUsers);
+
+//get inactive users
+router.get('/users/status/inactive', newUser.getInActiveUsers);
 
 module.exports= router;
