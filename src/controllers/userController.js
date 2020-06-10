@@ -10,7 +10,14 @@ const user = {
         userModel.find()
           .then((users) => res.json(users))
           .catch(err => res.status(400).json('Error:'`${err}`));
-      },
+    },
+    getUser: (req, res) => {
+       userModel.findById(req.params.id).then((user) => {
+            res.json(user)
+        }).catch((err) => {
+            res.status(400).json('Error:'`${err}`)
+        })
+    },
     addUser: (req, res) => {
         const { firstName, lastName, email, phoneNumber, age, status, address, gender } = req.body;
         const newUser = new userModel({firstName, lastName, email, phoneNumber, age, status, address, gender});
@@ -109,7 +116,6 @@ const user = {
         .catch((err) => res.status(400).json('err:' + err));
 
     },
-
     setUserAddress: (req, res) =>{
         const {address} = req.body;
         userModel.findOne({_id: req.params.id}).then(user =>{
@@ -117,6 +123,16 @@ const user = {
             user.save().then(() =>
             res.status(200).json(user))
         }).catch((err) => res.status(400).json('err:' + err));
+    },
+    getActiveUsers: (req, res) => {
+        userModel.find({ status: "active"})
+        .then(users => res.json(users))
+        .catch(err => res.json(`Error: ${err}`))
+    },
+    getInActiveUsers: (req, res) => {
+        userModel.find({ status: "inactive"})
+        .then(users => res.json(users))
+        .catch(err => res.json(`Error: ${err}`))
     }
 };
 
