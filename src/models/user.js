@@ -40,7 +40,7 @@ const UserSchema = new Schema({
         }
     },
     age: {
-        type: String,
+        type: Number,
         default: 0,
         validate(value){
 			if(value < 0) {
