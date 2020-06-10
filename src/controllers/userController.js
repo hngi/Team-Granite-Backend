@@ -96,12 +96,6 @@ const user = {
         userModel.findOne({_id: req.params.id}).then(user => res.json(user.status))
         .catch((err) => res.status(400).json('err:' + err));
     },
-    getUserGender: (req, res) =>{
-        userModel.findOne({_id: req.params.id}).then(user => res.json(user.gender))
-        .catch((err) => res.status(400).json('err:' + err));
-
-    },
-
     setUserGender: (req, res) =>{
         const {gender} = req.body;
         userModel.findOne({_id: req.params.id}).then(user =>{
@@ -110,9 +104,8 @@ const user = {
             res.status(200).json(user))
         }).catch((err) => res.status(400).json('err:' + err));
     },
-
-    getUserAddress: (req, res) =>{
-        userModel.findOne({_id: req.params.id}).then(user => res.json(user.address))
+    getUserGender: (req, res) =>{
+        userModel.findOne({_id: req.params.id}).then(user => res.json(user.gender))
         .catch((err) => res.status(400).json('err:' + err));
 
     },
@@ -123,6 +116,11 @@ const user = {
             user.save().then(() =>
             res.status(200).json(user))
         }).catch((err) => res.status(400).json('err:' + err));
+    },
+    getUserAddress: (req, res) =>{
+        userModel.findOne({_id: req.params.id}).then(user => res.json(user.address))
+        .catch((err) => res.status(400).json('err:' + err));
+
     },
     getActiveUsers: (req, res) => {
         userModel.find({ status: 'ACTIVE'})
