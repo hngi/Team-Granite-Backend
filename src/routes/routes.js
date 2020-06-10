@@ -6,7 +6,7 @@ const newUser = require('../controllers/userController');
 router.get('/', (req, res) => {
     
     res.status(200).json({ 
-        msg: "Welcome to Dockerized User Management App" 
+        msg: "Welcome to Dockerized User Management App [by TEAM GRANITE]" 
     });
 })
 
@@ -75,5 +75,12 @@ router.get('/users/status/active', newUser.getActiveUsers);
 
 //get inactive users
 router.get('/users/status/inactive', newUser.getInActiveUsers);
+
+
+//get non admin users
+router.get('/users/level/intern', newUser.getInternUsers);
+
+//get mentor users
+router.get('/users/level/mentor', newUser.getMentorUsers);
 
 module.exports= router;

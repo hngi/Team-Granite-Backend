@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const Schema = mongoose.Schema;
 
-
-const User = mongoose.model('User', {
+const UserSchema = new Schema({
     firstName: {
         type: String,
         required: true,
@@ -61,7 +61,18 @@ const User = mongoose.model('User', {
         type: String,
         enum: ['ACTIVE', 'INACTIVE'],
         default: 'ACTIVE'
-    }
-});
+    },
+    level: {
+        type: String,
+        enum: ['MENTOR', 'INTERN'],
+        default: 'INTERN',
+        required: true
+    },
+    updated: { 
+        type: Date,
+        default: Date.now
+    },
+    
+    });
 
-module.exports = User;
+module.exports = mongoose.model('User', UserSchema);
