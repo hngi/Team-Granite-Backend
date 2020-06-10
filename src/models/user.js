@@ -32,7 +32,7 @@ const User = mongoose.model('User', {
         validate(value){
                 if(!/^\d{11,13}$/.test(value)){
                     if(/[^\d]/.test(value)){
-                        throw new Error('Invalid Characters. Only numbers are allowed');
+                        throw new Error('One or more invalid characters. Numbers only');
                     }
                 //subject to change to a custom response later
                 throw new Error('Phone number should consist of 11 to 13 numbers');
@@ -59,6 +59,7 @@ const User = mongoose.model('User', {
     },
     status: { 
         type: String,
+        enum: ['active', 'inactive'],
         required: true
     }
 });
