@@ -133,6 +133,16 @@ const user = {
         userModel.find({ status: "inactive"})
         .then(users => res.json(users))
         .catch(err => res.status(400).json(`Error: ${err}`))
+    },
+    getInternUsers: (req, res) => {
+        userModel.find({ level: "intern"})
+        .then(users => res.json(users))
+        .catch(err => res.status(400).json(`Error: ${err}`))
+    },
+    getMentorUsers: (req, res) => {
+        userModel.find({ level: "mentor"})
+        .then(users => res.json(users))
+        .catch(err => res.status(400).json(`Error: ${err}`))
     }
 };
 
