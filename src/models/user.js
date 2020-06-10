@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcrypt');
 
 
 const User = mongoose.model('User', {
@@ -43,6 +44,11 @@ const User = mongoose.model('User', {
         type: String,
         trim: true,
     },
+    password: {
+        type: String,
+        required: true,
+        trim: true,
+      },
     gender: { 
         type: String,
         enum: ['male', 'female'],

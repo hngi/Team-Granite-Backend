@@ -1,4 +1,5 @@
 const env = require( 'dotenv');
+const bcrypt = require('bcrypt')
 
 const userModel = require( '../models/user');
 
@@ -123,6 +124,13 @@ const user = {
             user.save().then(() =>
             res.status(200).json(user))
         }).catch((err) => res.status(400).json('err:' + err));
+    },
+    getUserPassword: (req, res) => {
+        userModel.findOne({_id: req.param.id}).then = res.jaso(user.password)
+        .catch((err) => res.status(400).jason('err:' + err));
+    },
+    setUserPassword: (req, res) => {
+
     },
     getActiveUsers: (req, res) => {
         userModel.find({ status: "active"})

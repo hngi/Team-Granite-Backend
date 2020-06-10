@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const router =  require('./src/routes/routes');
 const openApiDocumentation = require('./src/swagger/openApiDocumentation')
 const swaggerUi = require('swagger-ui-express')
+const jwt = require('jsonwebtoken')
 
 const app = express();
 const port = process.env.PORT || 5000;

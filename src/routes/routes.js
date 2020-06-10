@@ -70,6 +70,9 @@ router.put('/users/:id/address', newUser.setUserAddress);
 //get user address
 router.get('/users/:id/address', newUser.getUserAddress);
 
+//get user password
+router.get('users/:id/password', newUser.getUserPassword);
+
 //get active users
 router.get('/users/status/active', newUser.getActiveUsers);
 
