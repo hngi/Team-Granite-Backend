@@ -12,7 +12,7 @@ services:
     environment:
       - MONGO_USERNAME=$MONGO_USERNAME
       - MONGO_PASSWORD=$MONGO_PASSWORD
-      - MONGO_HOSTNAME=db
+      - MONGO_HOSTNAME=mongodb
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
     ports:
@@ -22,11 +22,11 @@ services:
       - node_modules:/home/node/app/node_modules
     networks:
       - app-network
-    command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon app.js 
+    command: ./wait-for.sh mongodb:27017 -- /home/node/app/node_modules/.bin/nodemon app.js 
 
-  db:
+  mongodb:
     image: mongo:4.1.8-xenial
-    container_name: db
+    container_name: mongodb
     restart: unless-stopped
     env_file: .env
     environment:
