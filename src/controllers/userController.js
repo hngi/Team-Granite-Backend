@@ -33,9 +33,9 @@ const user = {
         const user = await userModel.findOneAndUpdate({ _id: req.params.id }, {lastName : req.body.lastName});
         res.status(200).send(user);
     },
-    setUserEmail: (req, res) =>{
+    setUserEmail: async (req, res) =>{
         const {email} = req.body;
-        userModel.findOne({_id: req.params.id}).then(user =>{
+        await userModel.findOne({_id: req.params.id}).then(user =>{
             user.email = email;
             user.save().then(()=> res.status(200).json('Email updated!'))
             .catch((err) => res.status(400).json('err:' + err));
@@ -125,12 +125,12 @@ const user = {
         }).catch((err) => res.status(400).json('err:' + err));
     },
     getActiveUsers: (req, res) => {
-        userModel.find({ status: "active"})
+        userModel.find({ status: 'ACTIVE'})
         .then(users => res.json(users))
         .catch(err => res.status(400).json(`Error: ${err}`))
     },
     getInActiveUsers: (req, res) => {
-        userModel.find({ status: "inactive"})
+        userModel.find({ status: 'INACTIVE'})
         .then(users => res.json(users))
         .catch(err => res.status(400).json(`Error: ${err}`))
     }
