@@ -46,12 +46,6 @@ const User = mongoose.model('User', {
 			if(value < 0) {
                 throw new Error('Age must be a positive number');
             }
-            // if(typeof value != 'Number') {
-            // 	throw new Error('Age must be a number');
-            // }
-            if(/[^\d]/.test(value)){
-                throw new Error('One or more invalid characters. Numbers only');
-            }
 		}
     },
     address: {
