@@ -2,7 +2,7 @@ FROM node:10-alpine
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
-RUN chmod -R ugo+w /usr/local/lib/node_modules
+RUN chmod -R ugo+w /home/node/app/node_modules
 
 WORKDIR /home/node/app
 
@@ -12,7 +12,7 @@ USER node
 
 RUN npm install
 
-RUN npm install -g swagger-ui-express
+RUN npm install swagger-ui-express
 
 COPY --chown=node:node . .
 
