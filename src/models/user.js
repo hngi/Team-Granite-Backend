@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const Schema = mongoose.Schema;
 
-
-const User = mongoose.model('User', {
+const UserSchema = new Schema({
     firstName: {
         type: String,
         required: true,
@@ -26,7 +26,7 @@ const User = mongoose.model('User', {
             }
         }
     },
-    phoneNumber: {
+    phone: {
         type: String,
         required: true,
         validate(value){
@@ -44,7 +44,7 @@ const User = mongoose.model('User', {
         default: 0,
         validate(value){
 			if(value < 0) {
-                throw new Error('Age must be a positive number')
+                throw new Error('Age must be a positive number');
             }
 		}
     },
@@ -61,7 +61,18 @@ const User = mongoose.model('User', {
         type: String,
         enum: ['ACTIVE', 'INACTIVE'],
         default: 'ACTIVE'
-    }
-});
+    },
+    level: {
+        type: String,
+        enum: ['MENTOR', 'INTERN'],
+        default: 'INTERN',
+        required: true
+    },
+    updated: { 
+        type: Date,
+        default: Date.now
+    },
+    
+    });
 
-module.exports = User;
+module.exports = mongoose.model('User', UserSchema);

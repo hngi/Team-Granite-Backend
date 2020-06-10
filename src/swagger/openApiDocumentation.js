@@ -33,13 +33,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    $ref: '#/components/schemas/Users',
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             }
@@ -66,13 +73,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    $ref: '#/components/schemas/User',
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             }
@@ -98,13 +112,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    type: 'string'
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             },
@@ -158,7 +179,7 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    type: 'string'
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
@@ -190,13 +211,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    type: 'string'
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             },
@@ -220,13 +248,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    type: 'string'
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             },
@@ -252,13 +287,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    type: 'string'
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             },
@@ -283,13 +325,20 @@ const openApiDocumentation = {
                     content: {
                         'application/json': {
                             schema: {
-                                type: 'string'
+                                $ref: '#/components/schemas/Response'
                             },
                         },
                     },
                 },
                 '400': {
                     description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
                 }
             }
         },
@@ -314,13 +363,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    type: 'string'
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             },
@@ -345,13 +401,20 @@ const openApiDocumentation = {
                     content: {
                         'application/json': {
                             schema: {
-                                type: 'string'
+                                $ref: '#/components/schemas/Response'
                             },
                         },
                     },
                 },
                 '400': {
                     description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
                 }
             }
         },
@@ -376,13 +439,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    type: 'string'
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             },
@@ -407,13 +477,20 @@ const openApiDocumentation = {
                     content: {
                         'application/json': {
                             schema: {
-                                type: 'string'
+                                $ref: '#/components/schemas/Response'
                             },
                         },
                     },
                 },
                 '400': {
                     description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
                 }
             }
         },
@@ -438,13 +515,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    type: 'string'
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             },
@@ -469,13 +553,20 @@ const openApiDocumentation = {
                     content: {
                         'application/json': {
                             schema: {
-                                type: 'string'
+                                $ref: '#/components/schemas/Response'
                             },
                         },
                     },
                 },
                 '400': {
                     description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
                 }
             }
         },
@@ -500,13 +591,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    type: 'string'
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             },
@@ -531,13 +629,20 @@ const openApiDocumentation = {
                     content: {
                         'application/json': {
                             schema: {
-                                type: 'string'
+                                $ref: '#/components/schemas/Response'
                             },
                         },
                     },
                 },
                 '400': {
                     description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
                 }
             }
         },
@@ -562,13 +667,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    type: 'string'
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             },
@@ -593,13 +705,20 @@ const openApiDocumentation = {
                     content: {
                         'application/json': {
                             schema: {
-                                type: 'string'
+                                $ref: '#/components/schemas/Response'
                             },
                         },
                     },
                 },
                 '400': {
                     description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
                 }
             }
         },
@@ -624,13 +743,20 @@ const openApiDocumentation = {
                         content: {
                             'application/json': {
                                 schema: {
-                                    type: 'string'
+                                    $ref: '#/components/schemas/Response'
                                 },
                             },
                         },
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             },
@@ -655,13 +781,20 @@ const openApiDocumentation = {
                     content: {
                         'application/json': {
                             schema: {
-                                type: 'string'
+                                $ref: '#/components/schemas/Response'
                             },
                         },
                     },
                 },
                 '400': {
                     description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
                 }
             }
         }
@@ -697,6 +830,20 @@ const openApiDocumentation = {
                 type: 'array',
                 items: {
                     $ref: '#/components/schemas/User'
+                }
+            },
+            Response: {
+                type: 'object',
+                properties: {
+                    status: {
+                        type: 'string'
+                    },
+                    message: {
+                        type: 'string'
+                    },
+                    data: {
+                        type: 'object'
+                    }
                 }
             }
         }
