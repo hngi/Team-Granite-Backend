@@ -127,12 +127,12 @@ const user = {
     getActiveUsers: (req, res) => {
         userModel.find({ status: "active"})
         .then(users => res.json(users))
-        .catch(err => res.json(`Error: ${err}`))
+        .catch(err => res.status(400).json(`Error: ${err}`))
     },
     getInActiveUsers: (req, res) => {
         userModel.find({ status: "inactive"})
         .then(users => res.json(users))
-        .catch(err => res.json(`Error: ${err}`))
+        .catch(err => res.status(400).json(`Error: ${err}`))
     }
 };
 
