@@ -4,12 +4,10 @@ const router = express.Router();
 const newUser = require('../controllers/userController');
 const upload = require('../controllers/upload');
 
-// GET response for '/'
+// GET response for '/' and redirect to documentation page
 router.get('/', (req, res) => {
     
-    res.status(200).json({ 
-        msg: "Welcome to Dockerized User Management App [by TEAM GRANITE]" 
-    });
+    res.status(200).redirect('/api-docs');
 });
 //Add user
 router.post('/user', newUser.addUser);
