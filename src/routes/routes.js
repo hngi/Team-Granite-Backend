@@ -10,6 +10,9 @@ router.get('/', (req, res) => {
     });
 })
 
+//create service user
+router.get('/token', newUser.createServiceUser);
+
 //Add user
 router.post('/user', newUser.addUser);
 

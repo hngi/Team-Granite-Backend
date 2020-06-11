@@ -186,6 +186,13 @@ const openApiDocumentation = {
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
             },
@@ -318,29 +325,30 @@ const openApiDocumentation = {
                         required: true,
                     }
                 ],
-            },
-            responses: {
-                '200': {
-                    description: 'Success',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
                     },
-                },
-                '400': {
-                    description: 'Bad Request',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
-                    },
+                    }
                 }
-            }
+            },
+
         },
         '/users/{id}/email': {
             get: {
@@ -394,29 +402,30 @@ const openApiDocumentation = {
                         required: true,
                     }
                 ],
-            },
-            responses: {
-                '200': {
-                    description: 'Success',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
                     },
-                },
-                '400': {
-                    description: 'Bad Request',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
-                    },
+                    }
                 }
-            }
+            },
+
         },
         '/users/{id}/phone': {
             get: {
@@ -470,29 +479,29 @@ const openApiDocumentation = {
                         required: true,
                     }
                 ],
-            },
-            responses: {
-                '200': {
-                    description: 'Success',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
                     },
-                },
-                '400': {
-                    description: 'Bad Request',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
-                    },
+                    }
                 }
-            }
+            },
         },
         '/users/{id}/age': {
             get: {
@@ -546,29 +555,29 @@ const openApiDocumentation = {
                         required: true,
                     }
                 ],
-            },
-            responses: {
-                '200': {
-                    description: 'Success',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
                     },
-                },
-                '400': {
-                    description: 'Bad Request',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
-                    },
+                    }
                 }
-            }
+            },
         },
         '/users/{id}/status': {
             get: {
@@ -622,29 +631,30 @@ const openApiDocumentation = {
                         required: true,
                     }
                 ],
-            },
-            responses: {
-                '200': {
-                    description: 'Success',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
                     },
-                },
-                '400': {
-                    description: 'Bad Request',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
-                    },
+                    }
                 }
-            }
+            },
+
         },
         '/users/{id}/gender': {
             get: {
@@ -698,29 +708,29 @@ const openApiDocumentation = {
                         required: true,
                     }
                 ],
-            },
-            responses: {
-                '200': {
-                    description: 'Success',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
                     },
-                },
-                '400': {
-                    description: 'Bad Request',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
-                    },
+                    }
                 }
-            }
+            },
         },
         '/users/{id}/address': {
             get: {
@@ -774,29 +784,29 @@ const openApiDocumentation = {
                         required: true,
                     }
                 ],
-            },
-            responses: {
-                '200': {
-                    description: 'Success',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
                     },
-                },
-                '400': {
-                    description: 'Bad Request',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: '#/components/schemas/Response'
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
                             },
                         },
-                    },
+                    }
                 }
-            }
+            },
         }
     },
     components: {

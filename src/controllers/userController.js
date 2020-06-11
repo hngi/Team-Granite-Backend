@@ -1,10 +1,24 @@
 const env = require( 'dotenv');
 
 const userModel = require( '../models/user');
+const serviceUser = require('../models/service_user')
+const jwtUtil = require('../security/jwtAuth')
 
 env.config();
 
 const user = {
+
+
+    createServiceUser: (req,res) => {
+        const email = req.query.email;
+        const apiKey = jwtUtil.generateApiKey();
+        const newServiceUser =  new serviceUser({email, apiKey});
+        newServiceUser.save().then(() => {
+            res.json(newServiceUser)
+        }).catch((error) => {
+            res.json(error)
+        })
+    },
 
     getAllUsers: (req, res) => {
         userModel.find()

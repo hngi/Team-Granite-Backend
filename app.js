@@ -4,6 +4,10 @@ const helmet = require('helmet');
 const router =  require('./src/routes/routes');
 const openApiDocumentation = require('./src/swagger/openApiDocumentation')
 const swaggerUi = require('swagger-ui-express')
+const serviceUser = require('./src/models/service_user')
+
+
+const jwtUtil = require('./src/security/jwtAuth')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,11 +18,23 @@ dotenv.config();
 connectToDatabase();
 
 
+
+
+
+// jwtUtil.createToken(userEntity).then(response => {
+//     console.log(response)
+// }).catch((error) => {
+//     console.log(error)
+// });
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 
 app.use('/', router);
+
+
+
 
 app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));
