@@ -72,7 +72,14 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    avatar: {
+		type: Buffer
+    },
+    url: {
+        type: String,
+        default: "NA"
+    }
     
-    });
+});
 
 module.exports = mongoose.model('User', UserSchema);

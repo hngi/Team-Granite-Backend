@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const newUser = require('../controllers/userController');
+const upload = require('../controllers/upload');
 
 router.get('/', (req, res) => {
     
@@ -82,5 +83,15 @@ router.get('/users/level/intern', newUser.getInternUsers);
 
 //get mentor users
 router.get('/users/level/mentor', newUser.getMentorUsers);
+
+//Get Avatar
+router.get('/users/:id/avatar', newUser.getUserAvatar);
+
+//Set Avatar
+router.put('/users/:id/avatar', upload.single('avatar'), newUser.setUserAvatar);
+
+//Delete Avatar
+router.delete('/users/:id/avatar', newUser.removeUserAvatar);
+
 
 module.exports= router;
