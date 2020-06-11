@@ -14,81 +14,42 @@
 </head>
 <body>
     <div class="container">
-        <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
-        <hr>
-        
+        <br>
         <div class="card bg-light">
-        <article class="card-body mx-auto" style="max-width: 400px;">
-            <h4 class="card-title mt-3 text-center">Dockarized User App</h4>
-            <p class="text-center">Enter your Details</p>
-        
+        <article class="card-body mx-auto" style="max-width: 800px;">
+            <h2 class="card-title mt-3 text-center">Team Granite Dockarized User Management App</h2>
+            <hr>
             <p class="divider-text">
-                <span class="bg-light">OR</span>
             </p>
-            <form>
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                 </div>
-                <input name="" class="form-control" placeholder="First Name" type="text">
-            </div> <!-- form-group// -->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                 </div>
-                <input name="" class="form-control" placeholder="Last Name" type="text">
-            </div> <!-- form-group// -->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                 </div>
-                <input name="" class="form-control" placeholder="Email " type="email">
-            </div> <!-- form-group// -->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                 </div>
-                <input name="" class="form-control" placeholder="Address" type="text">
-            </div> <!-- form-group// -->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-                </div>
-                <select class="custom-select" style="max-width: 120px;">
-                    <option selected="">+234</option>
-                    <option value="1">+223</option>
-                    <option value="2">+233</option>
-                    <option value="3">+297</option>
-                </select>
-                <input name="" class="form-control" placeholder="Phone Number" type="text">
-            </div> <!-- form-group// -->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-                </div>
-                <select class="form-control">
-                    <option selected=""> Select status</option>
-                    <option>Active</option>
-                    <option>Inactive</option>
-                </select>
-            </div> <!-- form-group end.// -->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                </div>
-                <input class="form-control" placeholder="Create password" type="password">
-            </div> <!-- form-group// -->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                </div>
-                <input class="form-control" placeholder="Repeat password" type="password">
-            </div> <!-- form-group// -->                                      
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block"> Submit  </button>
-            </div> <!-- form-group// -->      
-            <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
-        </form>
+
+            <div class="row"> <h3>Testing the App using Postman</h3></div>
+
+            <div><p> Get All Users: In Postman open your workspace,</p>
+                <ul>
+                    <li>Set your HTTP request to GET.</li>
+                    <li>In the request URL field, input link with /users at the end e.g <a href ="#">http://localhost:5000/users</a> </li>
+                    <li>Click Send</li>
+                	<li>You will see ‘200 OK’ Message if it runs successfully</li>
+                	<li>There should be a json file result of the users in the body which indicates that your test has run successfully.</li>
+            </ul>    
+            </div>
+            
+
+            <div class="row"> <h3>Testing the POST request to add a user</h3></div>
+
+            <div><p> Get A Single User: In the workspace,</p>
+                <ul>
+                    <li>Set your HTTP request to POST.</li>
+                    <li>In the request URL field, input link with /user at the end e.g <a href ="#">http://localhost:5000/user</a> </li>
+                    <li>In the body you will have to fill the required information</li>
+                    <li>Click Send</li>
+                	<li>You will see ‘200 OK’ Message if it runs successfully</li>
+                	<li>There should be a json file result of the users in the body which indicates that you have added your user successfully.</li>
+            </ul>   
+            
+            <p>For more end points you can follow our documentation at this <a href ="http://usermanager.microapi.dev/api-docs">link</a> or by adding the rout/api-docs at the end of the root link .</p>
+            </div>
+            
         </article>
         </div> <!-- card.// -->
         
