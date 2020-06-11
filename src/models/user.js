@@ -66,7 +66,6 @@ const UserSchema = new Schema({
         type: String,
         enum: ['MENTOR', 'INTERN'],
         default: 'INTERN',
-        required: true
     },
     updated: { 
         type: Date,
@@ -76,7 +75,7 @@ const UserSchema = new Schema({
     },
     url: {
         type: String,
-        default: "NA"
+        default: "N/A"
     }
     
 });

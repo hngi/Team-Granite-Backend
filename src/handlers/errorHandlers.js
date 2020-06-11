@@ -4,6 +4,7 @@ exports.catchErrors = (fn) => {
     };
   };
 
+  
 exports.errHandler = (err,res)=>{
   let message = err.message
   if(err.message.includes("Cast to ObjectId failed")){
