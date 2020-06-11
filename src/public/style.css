@@ -19,7 +19,10 @@
     left: 0;
     z-index: 1;
 }
-
+img{
+    width: "500px";
+    height: "350px";
+}
 .btn-facebook {
     background-color: #405D9D;
     color: #fff;
