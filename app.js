@@ -6,7 +6,7 @@ const openApiDocumentation = require("./src/swagger/openApiDocumentation");
 const swaggerUi = require("swagger-ui-express");
 
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5000;
 
 import connectToDatabase from "./src/db/mongoose";
 
