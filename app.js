@@ -15,14 +15,14 @@ dotenv.config();
 connectToDatabase();
 
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
+app.use('/', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use('/src', express.static('img'))
-app.get('/', (req, res) =>{
+app.get('/postman', (req, res) =>{
     res.sendFile(path.join(__dirname, '/src/public', 'index.html'));
 });
-app.use('/', router);
+app.use('/v1', router);
 
 app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));
