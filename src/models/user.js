@@ -70,9 +70,22 @@ const UserSchema = new Schema({
     },
     updated: { 
         type: Date,
-        default: Date.now
     },
+    avatar: {
+		type: Buffer
+    },
+    url: {
+        type: String,
+        default: "NA"
+    }
     
-    });
+});
+
+//updated_at should be the current time only when updated
+UserSchema.pre('save', function(next) {
+    this.updated_at = Date.now();
+    next();
+});
+
 
 module.exports = mongoose.model('User', UserSchema);
