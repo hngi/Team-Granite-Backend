@@ -3,11 +3,6 @@ const validator = require("validator");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  sID: {
-    type: String,
-    required: true,
-    trim: true,
-  },
   firstName: {
     type: String,
     required: true,
