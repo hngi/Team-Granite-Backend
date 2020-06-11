@@ -77,6 +77,10 @@ const user = {
         userModel.findOne({_id: req.params.id}).then(user => res.json({status: 'Success', message: 'User phone number', data: user.phone}))
         .catch((err) => res.status(400).json({status: 'Failed', message: 'An Error Occurred', data: null}));
     }, 
+    changetUserEmail: (req, res) =>{
+        userModel.findOne({_id: req.params.id}).then(user => res.json({status: 'Success', message: 'User email', data: user.email}))
+        .catch((err) => res.status(400).json({status: 'Failed', message: 'An Error Occurred', data: null}));
+    },
     setUserAge: (req, res) =>{
         const {age} = req.body;
         userModel.findOne({_id: req.params.id}).then(user =>{
