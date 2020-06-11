@@ -19,8 +19,8 @@ const user = {
         })
     },
     addUser: (req, res) => {
-        const { firstName, lastName, email, phone, age, status, address, gender } = req.body;
-        const newUser = new userModel({firstName, lastName, email, phone, age, status, address, gender});
+        const { firstName, lastName, email, phone, age, status, address, gender, level } = req.body;
+        const newUser = new userModel({firstName, lastName, email, phone, age, status, address, gender, level});
         newUser.save().then(() => res.json({status: 'Success', message: 'New user created!', data: newUser}))
         .catch( err => res.status(400).json({status: 'Failed', message: 'An error Occurred', data: null}));
     },
@@ -99,6 +99,18 @@ const user = {
     },
     getUserStatus: (req, res) =>{
         userModel.findOne({_id: req.params.id}).then(user => res.json({status: 'Success', message: 'User status', data: user.status}))
+        .catch((err) => res.status(400).json({status: 'Failed', message: 'An Error Occurred', data: null}));
+    },
+    setUserLevel: async (req, res) =>{
+        const {level} = req.body;
+        await userModel.findOne({_id: req.params.id}).then(users =>{
+            users.level = level;
+            users.save().then(()=> res.status(200).json({status: 'Success', message:'User level updated!', data: user}))
+            .catch((err) => res.status(400).json({status: 'Failed', message: 'An Error Occurred', data: null}));
+        }).catch((err) => res.status(400).json({status: 'Failed', message: 'An Error Occurred', data: null}));
+    },
+    getUserLevel: (req, res) =>{
+        userModel.findOne({_id: req.params.id}).then(user => res.json({status: 'Success', message: 'User level', data: user.level}))
         .catch((err) => res.status(400).json({status: 'Failed', message: 'An Error Occurred', data: null}));
     },
     setUserGender: (req, res) =>{
