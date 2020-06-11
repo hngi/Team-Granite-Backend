@@ -150,12 +150,12 @@ const user = {
         .catch(err => res.status(400).json({status: 'Failed', message: 'An Error Occurred', data: null}))
     },
     getInternUsers: (req, res) => {
-        userModel.find({ level: "intern"})
+        userModel.find({ level: "INTERN"})
         .then(users => res.json({status: 'Success', message: 'List of interns', data: users}))
         .catch(err => res.status(400).json({status: 'Failed', message: 'An Error Occurred', data: null}))
     },
     getMentorUsers: (req, res) => {
-        userModel.find({ level: "mentor"})
+        userModel.find({ level: "MENTOR"})
         .then(users => res.json({status: 'Success', message: 'List of mentors', data: users}))
         .catch(err => res.status(400).json({status: 'Failed', message: 'An Error Occurred', data: null}))
     }
