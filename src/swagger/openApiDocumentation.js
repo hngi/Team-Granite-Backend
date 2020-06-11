@@ -161,7 +161,7 @@ const openApiDocumentation = {
             // },
             get: {
                 tags: ['CRUD Operations'],
-                description: 'Get User',
+                description: 'Get a User',
                 operationId: 'getUser',
                 parameters: [
                     {
@@ -186,9 +186,16 @@ const openApiDocumentation = {
                     },
                     '400': {
                         description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
                     }
                 }
-            },
+            }
         },
         '/users/{id}/firstName': {
             get: {
@@ -798,11 +805,20 @@ const openApiDocumentation = {
                 }
             }
         },
+<<<<<<< HEAD
         '/users/{id}/intern': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get Intern Users',
                 operationId: 'getInternUsers',
+=======
+
+        '/users/{id}/active': {
+            get: {
+                tags: ['CRUD Operations'],
+                description: 'Get Active User Status',
+                operationId: 'getActiveUsers',
+>>>>>>> 07a284b47ddd05dff65bfd19a2ac70871a8c355b
                 parameters: [
                     {
                         name: 'id',
@@ -835,6 +851,7 @@ const openApiDocumentation = {
                         },
                     }
                 }
+<<<<<<< HEAD
             },
             put: {
                 tags: ['CRUD Operations'],
@@ -950,7 +967,53 @@ const openApiDocumentation = {
                 }
             }
         }
+=======
+            }
+        },
+    
+        '/users/{id}/inactive': {
+                get: {
+                    tags: ['CRUD Operations'],
+                    description: 'Get Status of inActive Users',
+                    operationId: 'getInActiveUsers',
+                    parameters: [
+                        {
+                            name: 'id',
+                            in: 'path',
+                            schema: {
+                                type: 'string',
+                            },
+                            required: true,
+                        }
+                    ],
+                    responses: {
+                        '200': {
+                            description: 'Success',
+                            content: {
+                                'application/json': {
+                                    schema: {
+                                        $ref: '#/components/schemas/Response'
+                                    },
+                                },
+                            },
+                        },
+                        '400': {
+                            description: 'Bad Request',
+                            content: {
+                                'application/json': {
+                                    schema: {
+                                        $ref: '#/components/schemas/Response'
+                                    },
+                                },
+                            },
+                        }
+                    }
+                }
+            }    
+>>>>>>> 07a284b47ddd05dff65bfd19a2ac70871a8c355b
     },
+            
+        
     components: {
         schemas: {
             User: {
@@ -1001,5 +1064,6 @@ const openApiDocumentation = {
         }
     }
 }
+
 
 module.exports = openApiDocumentation
