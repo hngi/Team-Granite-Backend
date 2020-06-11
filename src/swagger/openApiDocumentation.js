@@ -805,12 +805,20 @@ const openApiDocumentation = {
                 }
             }
         },
+<<<<<<< HEAD
+        '/users/{id}/intern': {
+            get: {
+                tags: ['CRUD Operations'],
+                description: 'Get Intern Users',
+                operationId: 'getInternUsers',
+=======
 
         '/users/{id}/active': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get Active User Status',
                 operationId: 'getActiveUsers',
+>>>>>>> 07a284b47ddd05dff65bfd19a2ac70871a8c355b
                 parameters: [
                     {
                         name: 'id',
@@ -843,6 +851,123 @@ const openApiDocumentation = {
                         },
                     }
                 }
+<<<<<<< HEAD
+            },
+            put: {
+                tags: ['CRUD Operations'],
+                description: 'Set Intern Users',
+                operationId: 'setInternUsers',
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+            },
+            responses: {
+                '200': {
+                    description: 'Success',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                },
+                '400': {
+                    description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                }
+            }
+        },
+        '/users/{id}/mentor': {
+            get: {
+                tags: ['CRUD Operations'],
+                description: 'Get Mentor Users',
+                operationId: 'getMentorUsers',
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+            put: {
+                tags: ['CRUD Operations'],
+                description: 'Set Mentor Users',
+                operationId: 'setMentorUsers',
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+            },
+            responses: {
+                '200': {
+                    description: 'Success',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                },
+                '400': {
+                    description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                }
+            }
+        }
+=======
             }
         },
     
@@ -885,6 +1010,7 @@ const openApiDocumentation = {
                     }
                 }
             }    
+>>>>>>> 07a284b47ddd05dff65bfd19a2ac70871a8c355b
     },
             
         
