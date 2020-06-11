@@ -3,13 +3,13 @@ const router = express.Router();
 
 const newUser = require('../controllers/userController');
 
+// GET response for '/'
 router.get('/', (req, res) => {
     
     res.status(200).json({ 
         msg: "Welcome to Dockerized User Management App [by TEAM GRANITE]" 
     });
-})
-
+});
 //Add user
 router.post('/user', newUser.addUser);
 
