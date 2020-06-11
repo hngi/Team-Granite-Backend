@@ -12,8 +12,8 @@ USER node
 
 RUN npm install
 
-RUN npm install swagger-ui-express
-
+RUN npm install --save swagger-ui-express
+RUN npm install --save sharp
 COPY --chown=node:node . .
 
 #RUN ls -lh /usr/local/bin/docker-entrypoint.sh

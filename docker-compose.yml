@@ -16,13 +16,13 @@ services:
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
     ports:
-      - "8082:5000"
+      - "8001:5000"
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
     networks:
       - app-network
-    command: ./wait-for.sh db:8350 -- /home/node/app/node_modules/.bin/nodemon app.js 
+    command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon app.js 
 
   db:
     image: mongo:4.1.8-xenial
@@ -32,8 +32,6 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
       - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
-    ports:
-      - "8350:27017"
     volumes:     
       - dbdata:/data/db
     networks:
