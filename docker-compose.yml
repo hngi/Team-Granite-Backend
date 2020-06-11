@@ -1,12 +1,12 @@
 version: '3'
 
 services:
-  nodejs:
+  teamgranitemongonodejs:
     build:
       context: .
       dockerfile: Dockerfile
     image: nodejs
-    container_name: nodejs
+    container_name: teamgranitemongonodejs
     restart: unless-stopped
     env_file: .env
     environment:
