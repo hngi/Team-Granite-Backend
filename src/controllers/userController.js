@@ -178,7 +178,7 @@ const user = {
         const url = req.protocol+ "://"+req.get('host')+req.originalUrl
         try{
             const buffer = await sharp(req.file.buffer).resize({width:250, height: 250}).png().toBuffer();
-            const user = await userModel.findById(req.params.id);
+            const user = await userModel.findOne({_id: req.params.id});
             user.avatar = buffer;
             user.url = url;
             await user.save().then(()=> res.status(200).json({status: 'Success', message:'Avatar updated!', data:{url}}))
