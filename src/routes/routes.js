@@ -12,86 +12,86 @@ router.get('/', (req, res) => {
     });
 });
 //Add user
-router.post('/user', newUser.addUser);
+router.post('/v1/user', newUser.addUser);
 
 //remove user
-router.delete('/user/:id', newUser.removeUser);
+router.delete('/v1/user/:id', newUser.removeUser);
 
 //Get All users
-router.get('/users', newUser.getAllUsers);
+router.get('/v1/users', newUser.getAllUsers);
 
 //Get User
-router.get('/user/:id', newUser.getUser);
+router.get('/v1/user/:id', newUser.getUser);
 
 //Get first name
-router.get('/users/:id/firstName', newUser.getUserFirstName);
+router.get('/v1/users/:id/firstName', newUser.getUserFirstName);
 
 //Set first name
-router.put('/users/:id/firstName', newUser.setUserFirstName);
+router.put('/v1/users/:id/firstName', newUser.setUserFirstName);
 
 //Get last name
-router.get('/users/:id/lastName', newUser.getUserLastName);
+router.get('/v1/users/:id/lastName', newUser.getUserLastName);
 
 //Set last name
-router.put('/users/:id/lastName', newUser.setUserLastName);
+router.put('/v1/users/:id/lastName', newUser.setUserLastName);
 
 //Get user email
-router.get('/users/:id/email', newUser.getUserEmail);
+router.get('/v1/users/:id/email', newUser.getUserEmail);
 
 //set user email
-router.put('/users/:id/email', newUser.setUserEmail);
+router.put('/v1/users/:id/email', newUser.setUserEmail);
 
 //Get user phone
-router.get('/users/:id/phone', newUser.getUserPhone);
+router.get('/v1/users/:id/phone', newUser.getUserPhone);
 
 //set user phone
-router.put('/users/:id/phone', newUser.setUserPhone);
+router.put('/v1/users/:id/phone', newUser.setUserPhone);
 
 //get user age
-router.get('/users/:id/age', newUser.getUserAge);
+router.get('/v1/users/:id/age', newUser.getUserAge);
 
 //set user age
-router.put('/users/:id/age', newUser.setUserAge);
+router.put('/v1/users/:id/age', newUser.setUserAge);
 
 //set user status
-router.put('/users/:id/status', newUser.setUserStatus);
+router.put('/v1/users/:id/status', newUser.setUserStatus);
 
 //get user status
-router.get('/users/:id/status', newUser.getUserStatus);
+router.get('/v1/users/:id/status', newUser.getUserStatus);
 
 //get user gender
-router.get('/users/:id/gender', newUser.getUserGender);
+router.get('/v1/users/:id/gender', newUser.getUserGender);
 
 //set user gender
-router.put('/users/:id/gender', newUser.setUserGender);
+router.put('/v1/users/:id/gender', newUser.setUserGender);
 
 //set user address
-router.put('/users/:id/address', newUser.setUserAddress);
+router.put('/v1/users/:id/address', newUser.setUserAddress);
 
 //get user address
-router.get('/users/:id/address', newUser.getUserAddress);
+router.get('/v1/users/:id/address', newUser.getUserAddress);
 
 //get active users
-router.get('/users/status/active', newUser.getActiveUsers);
+router.get('/v1/users/status/active', newUser.getActiveUsers);
 
 //get inactive users
-router.get('/users/status/inactive', newUser.getInActiveUsers);
+router.get('/v1/users/status/inactive', newUser.getInActiveUsers);
 
 
 //get non admin users
-router.get('/users/level/intern', newUser.getInternUsers);
+router.get('/v1/users/level/intern', newUser.getInternUsers);
 
 //get mentor users
-router.get('/users/level/mentor', newUser.getMentorUsers);
+router.get('/v1/users/level/mentor', newUser.getMentorUsers);
 
 //Get Avatar
-router.get('/users/:id/avatar', newUser.getUserAvatar);
+router.get('/v1/users/:id/avatar', newUser.getUserAvatar);
 
 //Set Avatar
-router.put('/users/:id/avatar', upload.single('avatar'), newUser.setUserAvatar);
+router.put('/v1/users/:id/avatar', upload.single('avatar'), newUser.setUserAvatar);
 
 //Delete Avatar
-router.delete('/users/:id/avatar', newUser.removeUserAvatar);
+router.delete('/v1/users/:id/avatar', newUser.removeUserAvatar);
 
 
 module.exports= router;
