@@ -41,9 +41,9 @@ const user = {
             .catch((err) => res.status(400).json({'Status': 'Failed', 'Message': 'Error: ' + err, 'Data': ''}));
         }).catch((err) => res.status(400).json({'Status': 'Failed', 'Message': 'Error: ' + err, 'Data': ''}));
     },
-    setUserPhone: (req, res) =>{
-        const {phone} = req.body;
-        userModel.findOne({_id: req.params.id}).then(user =>{
+    setUserPhone: async (req, res) =>{
+      const {phone} = req.body;
+      await userModel.findOne({_id: req.params.id}).then(user =>{
             user.phone = phone;
             user.save().then(()=> res.status(200).json({'Status': 'Success', 'Message': 'Phone number updated!', 'Data': phone}))
             .catch((err) => res.status(400).json({'Status': 'Failed', 'Message': 'Error: ' + err, 'Data': ''}));
@@ -70,9 +70,9 @@ const user = {
         .catch((err) => res.status(400).json('err:' + err));
 
     },
-    setUserAge: (req, res) =>{
-        const {age} = req.body;
-        userModel.findOne({_id: req.params.id}).then(user =>{
+    setUserAge: async (req, res) =>{
+      const {age} = req.body;
+      await userModel.findOne({_id: req.params.id}).then(user =>{
             user.age = age;
             user.save().then(() =>
             res.status(200).json(user))
