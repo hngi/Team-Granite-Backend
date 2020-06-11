@@ -2,14 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 const newUser = require('../controllers/userController');
+const upload = require('../controllers/upload');
 
+// GET response for '/'
 router.get('/', (req, res) => {
     
     res.status(200).json({ 
         msg: "Welcome to Dockerized User Management App [by TEAM GRANITE]" 
     });
-})
-
+});
 //Add user
 router.post('/user', newUser.addUser);
 
@@ -82,5 +83,15 @@ router.get('/users/level/intern', newUser.getInternUsers);
 
 //get mentor users
 router.get('/users/level/mentor', newUser.getMentorUsers);
+
+//Get Avatar
+router.get('/users/:id/avatar', newUser.getUserAvatar);
+
+//Set Avatar
+router.put('/users/:id/avatar', upload.single('avatar'), newUser.setUserAvatar);
+
+//Delete Avatar
+router.delete('/users/:id/avatar', newUser.removeUserAvatar);
+
 
 module.exports= router;

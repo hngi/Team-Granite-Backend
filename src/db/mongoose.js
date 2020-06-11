@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
+import env from 'dotenv';
+
+env.config();
 
 const connectToDatabase = () => {
-    mongoose.connect('mongodb://127.0.0.1:27017/Team-Granite-Dockerized-Users-Management-App-db', {
+    mongoose.connect(process.env.ATLAS_URI, {
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true,

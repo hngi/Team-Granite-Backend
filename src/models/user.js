@@ -40,7 +40,7 @@ const UserSchema = new Schema({
         }
     },
     age: {
-        type: String,
+        type: Number,
         default: 0,
         validate(value){
 			if(value < 0) {
@@ -72,7 +72,14 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    avatar: {
+		type: Buffer
+    },
+    url: {
+        type: String,
+        default: "NA"
+    }
     
-    });
+});
 
 module.exports = mongoose.model('User', UserSchema);
