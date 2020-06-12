@@ -1,6 +1,7 @@
 const companyModel = require( '../models/company');
 const teamModel = require('../models/team');
 const userModel = require('../models/user');
+const { errHandler } = require('../handlers/errorHandlers');
 
 const company = {
     getCompanyName: async (req, res) => {
@@ -44,3 +45,6 @@ const company = {
         }
     }
 };
+
+module.exports = company;
+
