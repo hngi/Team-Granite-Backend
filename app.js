@@ -19,7 +19,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
-app.use('/', router);
+app.use('/api/v1', router);
 
 app.use('/src', express.static('img'))
 
