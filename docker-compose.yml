@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     image: nodejs
     container_name: teamgranitemongonodejs
-    restart: unless-stopped
+    restart: always
     env_file: .env
     environment:
       - MONGO_USERNAME=$MONGO_USERNAME
@@ -27,7 +27,7 @@ services:
   teamgranitemongodb:
     image: mongo:4.1.8-xenial
     container_name: teamgranitemongodb
-    restart: unless-stopped
+    restart: always
     env_file: .env
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
