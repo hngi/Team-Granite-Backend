@@ -1,7 +1,9 @@
 # Team-Granite-Backend
+
 A Dockerized User Management App
 
-## Run the App: 
+## Run the App:
+
 - Fork this repository
 - Clone to your local machine
 - `cd` into the repository and run `npm install && npm start`
@@ -9,13 +11,16 @@ A Dockerized User Management App
 - View the documentation at `localhost:5000/v1/api-docs`
 
 ## Using the service
-- Open Postman and enter the base url followed by `/addServiceUser?email=youremail` (use your email as query parameter) to get registered on the service
-- Generate a token by entering base url followed by `/token?email=youremail` to generate a token
-- Copy the generated token and add it to Auth bearer in the authorization panel
-- Test by getting the list of users i.e` GET - http://base_url/users`
+
+- Open Postman and make a POST request by entering the base url followed by `/addServiceUser?email=youremail` (use your email as query parameter) to get registered on the service
+- Generate a token by making a GET request by entering base url followed by `/token?email=youremail` to generate a token
+- Copy the generated token and add it to Bearer Token in the authorization panel
+- Test by getting the list of users i.e`GET - http://base_url/users`
 
 ## Contribute guide
+
 If you're in team-granite-backend:
+
 - Pull the latest version of the repo `git pull`
 - Create a feature branch with your feature name, e.g: `<user-pagination>`
 - Create the your feature locally and commit
@@ -24,7 +29,9 @@ If you're in team-granite-backend:
 - Add yourself as a user to the database (this will eventually count for contribution points)
 
 ### Features (in order of priorities)
+
 Again, as a member of team-granite you are free to choose one. Only start working on a feature after you have confirmed that it is not already worked on:
+
 - add_user
 - remove_user
 - set_user_first_name
@@ -43,7 +50,8 @@ Again, as a member of team-granite you are free to choose one. Only start workin
 - custom ids (this is not priority, but it would be nice to have custom (short) ids)
 
 ### User Properties
-- _id (custom ids)
+
+- \_id (custom ids)
 - firs_tname
 - last_name
 - email
