@@ -19,7 +19,7 @@ const company = {
         if(!team) return res.status(404).json({status: 'Failed', message: "Team name not found", data: null })
         res.json({status: 'Success', message: "User team name", data: team.name})
     },
-    getTeamMembers: (req, res) =>{
+    getTeamMembers: async(req, res) =>{
         try{
             const team = await teamModel.findone(name)
                 if(!team) return res.status(404).json({status: 'Failed', message: "No team members found", data: null })
