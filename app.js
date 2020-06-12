@@ -3,17 +3,18 @@ const path = require('path');
 const dotenv = require('dotenv');
 const helmet = require('helmet');
 const router =  require('./src/routes/routes');
-const openApiDocumentation = require('./src/swagger/openApiDocumentation')
-const swaggerUi = require('swagger-ui-express')
+const openApiDocumentation = require('./src/swagger/openApiDocumentation');
+const swaggerUi = require('swagger-ui-express');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-import connectToDatabase  from'./src/db/mongoose';
+//import connectToDatabase  from'./src/db/mongoose';
+// const connectToDatabase = require('./src/db/mongoose');
+const connectToDatabase = require('./db');
 
 dotenv.config();
-connectToDatabase();
-
+// connectToDatabase(); //This removed to simplify the connection
 
 
 app.use(express.json());
