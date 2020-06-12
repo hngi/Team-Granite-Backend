@@ -19,7 +19,7 @@ If you're in team-granite-backend:
 - Pull the latest version of the repo `git pull`
 - Create a feature branch with your feature name, e.g: `<user-pagination>`
 - Create the your feature locally and commit
-- Send a PR after you have test your feature locally with Postman
+- Send a PR after you have tested your feature locally with Postman
 - Tell us in your PR in bullet points what you have added
 - Add yourself as a user to the database (this will eventually count for contribution points)
 

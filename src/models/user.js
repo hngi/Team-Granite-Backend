@@ -50,7 +50,7 @@ const UserSchema = new Schema({
     },
     address: {
         type: String,
-        trim: true,
+        trim: true
     },
     gender: { 
         type: String,
