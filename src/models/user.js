@@ -76,6 +76,9 @@ const UserSchema = new Schema({
     url: {
         type: String,
         default: "N/A"
+    },
+    team:{
+        type: String,
     }
     
 });
