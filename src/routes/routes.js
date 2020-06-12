@@ -109,5 +109,9 @@ router.delete('/users/:id/avatar',auth, newUser.removeUserAvatar);
 //Add Companies
 router.post('/companies/:id/team', auth, company.setUserTeamName);
 
+//Handle 404 Errors
+router.all('*', (req, res) => {
+    res.status(404).json({ status: 404, data: "404 - Page Not Found" });
+});
 
 module.exports= router;
