@@ -15,7 +15,7 @@ dotenv.config();
 
 
 
-app.use('/', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
+app.get('/', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
