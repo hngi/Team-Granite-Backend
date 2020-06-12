@@ -94,7 +94,7 @@ router.get('/users/status/inactive',auth, newUser.getInActiveUsers);
 router.get('/users/level/intern',auth, newUser.getInternUsers);
 
 //get mentor users
-router.get('/users/level/mentor',auth, newUser.getMentorUsers);
+//router.get('/users/level/mentor',auth, newUser.getMentorUsers);
 
 //Get Avatar
 router.get('/users/:id/avatar',auth, newUser.getUserAvatar);

@@ -62,11 +62,6 @@ const UserSchema = new Schema({
         enum: ['ACTIVE', 'INACTIVE'],
         default: 'ACTIVE'
     },
-    level: {
-        type: String,
-        enum: ['MENTOR', 'INTERN'],
-        default: 'INTERN',
-    },
     updated: { 
         type: Date,
     },
