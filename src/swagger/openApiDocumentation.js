@@ -17,15 +17,107 @@ const openApiDocumentation = {
     ],
     tags: [
         {
+            name: 'API Auth'
+        },
+        {
             name: 'CRUD Operations'
         }
+
     ],
+    security:{
+        'bearerAuth': {}
+    },
     paths: {
+        '/token': {
+            get:{
+                tags: ['API Auth'],
+                description: 'Generate Token',
+                operationId: 'generateToken',
+                security: [],
+                parameters: [
+                    {
+                        name: 'email',
+                        in: 'query',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+        },
+        '/addServiceUser': {
+            get:{
+                tags: ['API Auth'],
+                description: 'Add Service User',
+                operationId: 'addServiceUser',
+                security: [],
+                parameters: [
+                    {
+                        name: 'email',
+                        in: 'query',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+        },
         '/users': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get All Users',
                 operationId: 'getUsers',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 parameters: [],
                 responses: {
                     '200': {
@@ -56,6 +148,11 @@ const openApiDocumentation = {
                 tags: ['CRUD Operations'],
                 description: 'Add new User',
                 operationId: 'addUser',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 parameters: [],
                 requestBody: {
                     content: {
@@ -96,6 +193,11 @@ const openApiDocumentation = {
                 tags: ['CRUD Operations'],
                 description: 'Delete User',
                 operationId: 'deleteUser',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 parameters: [
                     {
                         name: 'id',
@@ -163,6 +265,11 @@ const openApiDocumentation = {
                 tags: ['CRUD Operations'],
                 description: 'Get a User',
                 operationId: 'getUser',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 parameters: [
                     {
                         name: 'id',
@@ -202,6 +309,11 @@ const openApiDocumentation = {
                 tags: ['CRUD Operations'],
                 description: 'Get User First Name',
                 operationId: 'getUserFirstName',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 parameters: [
                     {
                         name: 'id',
@@ -238,6 +350,11 @@ const openApiDocumentation = {
             put: {
                 tags: ['CRUD Operations'],
                 description: 'Set User First Name',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'setUserFirstName',
                 parameters: [
                     {
@@ -277,6 +394,11 @@ const openApiDocumentation = {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Last Name',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'getUserLastName',
                 parameters: [
                     {
@@ -314,6 +436,11 @@ const openApiDocumentation = {
             put: {
                 tags: ['CRUD Operations'],
                 description: 'Set User Last Name',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'setUserLastName',
                 parameters: [
                     {
@@ -355,6 +482,11 @@ const openApiDocumentation = {
                 tags: ['CRUD Operations'],
                 description: 'Get User email',
                 operationId: 'getUserEmail',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 parameters: [
                     {
                         name: 'id',
@@ -391,6 +523,11 @@ const openApiDocumentation = {
             put: {
                 tags: ['CRUD Operations'],
                 description: 'Set User Email',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'setUserEmail',
                 parameters: [
                     {
@@ -432,6 +569,11 @@ const openApiDocumentation = {
                 tags: ['CRUD Operations'],
                 description: 'Get User Phone',
                 operationId: 'getUserPhone',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 parameters: [
                     {
                         name: 'id',
@@ -469,6 +611,11 @@ const openApiDocumentation = {
                 tags: ['CRUD Operations'],
                 description: 'Set User Phone',
                 operationId: 'setUserPhone',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 parameters: [
                     {
                         name: 'id',
@@ -507,6 +654,11 @@ const openApiDocumentation = {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Age',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'getUserAge',
                 parameters: [
                     {
@@ -545,6 +697,11 @@ const openApiDocumentation = {
                 tags: ['CRUD Operations'],
                 description: 'Set User Age',
                 operationId: 'setUserAge',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 parameters: [
                     {
                         name: 'id',
@@ -583,6 +740,11 @@ const openApiDocumentation = {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Status',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'getUserStatus',
                 parameters: [
                     {
@@ -620,6 +782,11 @@ const openApiDocumentation = {
             put: {
                 tags: ['CRUD Operations'],
                 description: 'Set User Status',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'setUserStatus',
                 parameters: [
                     {
@@ -660,6 +827,11 @@ const openApiDocumentation = {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Gender',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'getUserGender',
                 parameters: [
                     {
@@ -697,6 +869,11 @@ const openApiDocumentation = {
             put: {
                 tags: ['CRUD Operations'],
                 description: 'Set User Gender',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'setUserGender',
                 parameters: [
                     {
@@ -736,6 +913,11 @@ const openApiDocumentation = {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Address',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'getUserAddress',
                 parameters: [
                     {
@@ -773,6 +955,11 @@ const openApiDocumentation = {
             put: {
                 tags: ['CRUD Operations'],
                 description: 'Set User Address',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'setUserAddress',
                 parameters: [
                     {
@@ -808,11 +995,15 @@ const openApiDocumentation = {
                 }
             }
         },
-
         '/users/{id}/active': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get Active User Status',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
                 operationId: 'getActiveUsers',
                 parameters: [
                     {
@@ -848,12 +1039,16 @@ const openApiDocumentation = {
                 }
             }
         },
-    
         '/users/{id}/inactive': {
                 get: {
                     tags: ['CRUD Operations'],
                     description: 'Get Status of inActive Users',
                     operationId: 'getInActiveUsers',
+                    security: [
+                        {
+                            'bearerAuth': {}
+                        }
+                    ],
                     parameters: [
                         {
                             name: 'id',
@@ -915,6 +1110,10 @@ const openApiDocumentation = {
                     age: {
                         type: 'integer',
                         description: 'User Age'
+                    },
+                    gender: {
+                        type: 'string',
+                        enum: ['MALE','FEMALE']
                     }
                 }
             },
@@ -937,6 +1136,15 @@ const openApiDocumentation = {
                         type: 'object'
                     }
                 }
+            }
+        },
+        securitySchemes:{
+            bearerAuth: {
+                type: 'http',
+                scheme: 'bearer',
+                bearerFormat: 'JWT',
+                name: 'Authorization',
+                in: 'header'
             }
         }
     }

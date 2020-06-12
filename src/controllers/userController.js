@@ -9,16 +9,34 @@ env.config();
 
 const user = {
 
-
-    createServiceUser: (req,res) => {
+    addServiceUser: (req,res) => {
         const email = req.query.email;
-        const apiKey = jwtUtil.generateApiKey();
-        const newServiceUser =  new serviceUser({email, apiKey});
-        newServiceUser.save().then(() => {
-            res.json(newServiceUser)
-        }).catch((error) => {
-            res.json(error)
+        const newUser = new serviceUser({
+            email,
+            apiKey: jwtUtil.generateApiKey()
         })
+        newUser.save().then((user) => {
+            res.json({status: 'Success', message: `Created Service User`, data: user})
+        }).catch((e) => {
+            res.status(400).json({status: 'Failed', message: `${e.message}`, data: null})
+        })
+    },
+
+    generateToken: async (req,res) => {
+        const email = req.query.email;
+        await serviceUser.findOne({email}).then((user) => {
+
+            if (!user){
+                res.status(400).json({status: 'Failed', message: `User was Not found`, data: null})
+                return;
+            }
+
+            try {
+                res.json({status: 'Success', message: `Generated Token for ${email}`, data: jwtUtil.createToken(user.email, user.apiKey)});
+            }catch (e) {
+                res.status(400).json({status: 'Failed', message: `${e.message}`, data: null})
+            }
+        });
     },
 
     getAllUsers: (req, res) => {

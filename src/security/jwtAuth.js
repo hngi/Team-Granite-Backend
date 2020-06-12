@@ -1,19 +1,20 @@
 const jwtUtil = require('jsonwebtoken')
-const secret = 'Team-granite-microservice'
 const { RandomToken } = require('@sibevin/random-token')
 
-const createToken = async ({email, apiKey}) => {
+const createToken =  (email, apiKey) => {
 
-    const token = await jwtUtil.sign({email,apiKey},secret, {
+    return jwtUtil.sign({email:email, apiKey:apiKey}, process.env.JWT_SECRET, {
         expiresIn: '23h',
         subject: 'Auth Token',
-    }, (error, token) => {
+    });
+}
 
-        if (error){
-            throw new Error(error)
-        }
-        return token;
-    })
+const decodeToken = (token) => {
+    try{
+        return jwtUtil.verify(token, process.env.JWT_SECRET);
+    }catch (e) {
+        throw new Error(e);
+    }
 
 }
 
@@ -23,5 +24,6 @@ const generateApiKey = () => {
 
 module.exports = {
     createToken: createToken,
-    generateApiKey: generateApiKey
+    generateApiKey: generateApiKey,
+    decodeToken
 }
