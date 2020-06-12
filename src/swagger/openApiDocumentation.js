@@ -28,7 +28,7 @@ const openApiDocumentation = {
         'bearerAuth': {}
     },
     paths: {
-        '/token': {
+        '/api/v1/token': {
             get:{
                 tags: ['API Auth'],
                 description: 'Generate Token',
@@ -68,8 +68,8 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/addServiceUser': {
-            get:{
+        '/api/v1/addServiceUser': {
+            post:{
                 tags: ['API Auth'],
                 description: 'Add Service User',
                 operationId: 'addServiceUser',
@@ -108,7 +108,7 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/users': {
+        '/api/v1/users': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get All Users',
@@ -143,7 +143,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/user': {
+        '/api/v1/user': {
             post:{
                 tags: ['CRUD Operations'],
                 description: 'Add new User',
@@ -188,7 +188,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/user/{id}': {
+        '/api/v1/user/{id}': {
             delete: {
                 tags: ['CRUD Operations'],
                 description: 'Delete User',
@@ -304,7 +304,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/users/{id}/firstName': {
+        '/api/v1/users/{id}/firstName': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User First Name',
@@ -390,7 +390,7 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/users/{id}/lastName': {
+        '/api/v1/users/{id}/lastName': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Last Name',
@@ -477,7 +477,7 @@ const openApiDocumentation = {
             },
 
         },
-        '/users/{id}/email': {
+        '/api/v1/users/{id}/email': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User email',
@@ -564,7 +564,7 @@ const openApiDocumentation = {
             },
 
         },
-        '/users/{id}/phone': {
+        '/api/v1/users/{id}/phone': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Phone',
@@ -650,7 +650,7 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/users/{id}/age': {
+        '/api/v1/users/{id}/age': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Age',
@@ -736,7 +736,7 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/users/{id}/status': {
+        '/api/v1/users/{id}/status': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Status',
@@ -823,7 +823,7 @@ const openApiDocumentation = {
             },
 
         },
-        '/users/{id}/gender': {
+        '/api/v1/users/{id}/gender': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Gender',
@@ -909,7 +909,7 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/users/{id}/address': {
+        '/api/v1/users/{id}/address': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Address',
@@ -995,7 +995,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/users/{id}/active': {
+        '/api/v1/users/{id}/active': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get Active User Status',
@@ -1039,7 +1039,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/users/{id}/inactive': {
+        '/api/v1/users/{id}/inactive': {
                 get: {
                     tags: ['CRUD Operations'],
                     description: 'Get Status of inActive Users',
@@ -1082,7 +1082,179 @@ const openApiDocumentation = {
                         }
                     }
                 }
+            },
+        '/api/v1/users/{id}/intern': {
+            get: {
+                tags: ['CRUD Operations'],
+                description: 'Get Intern Users',
+                operationId: 'getInternUsers',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+            put: {
+                tags: ['CRUD Operations'],
+                description: 'Set Intern Users',
+                operationId: 'setInternUsers',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+            },
+            responses: {
+                '200': {
+                    description: 'Success',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                },
+                '400': {
+                    description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                }
             }
+        },
+        '/api/v1/users/{id}/mentor': {
+            get: {
+                tags: ['CRUD Operations'],
+                description: 'Get Mentor Users',
+                operationId: 'getMentorUsers',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+            put: {
+                tags: ['CRUD Operations'],
+                description: 'Set Mentor Users',
+                operationId: 'setMentorUsers',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+            },
+            responses: {
+                '200': {
+                    description: 'Success',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                },
+                '400': {
+                    description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                }
+            }
+        }
     },
             
         

@@ -9,9 +9,7 @@ const auth = require('../middleware/auth')
 // GET response for '/'
 router.get('/', (req, res) => {
     
-    res.status(200).json({ 
-        msg: "Welcome to Dockerized User Management App [by TEAM GRANITE]" 
-    });
+    res.redirect('/api-docs');
 })
 
 //generate token
