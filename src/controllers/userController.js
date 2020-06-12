@@ -231,7 +231,7 @@ const user = {
         try{
             const user = await userModel.findOne({_id: req.params.id})
             if(!user) return res.status(404).json({status: 'Failed', message: "user not found", data: null })
-            res.json({status: 'Success', message: "User gender", data: user.address})
+            res.json({status: 'Success', message: "User address", data: user.address})
         }
         catch(err){
             errHandler(err, res)
