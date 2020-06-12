@@ -44,7 +44,7 @@ Again, as a member of team-granite you are free to choose one. Only start workin
 
 ### User Properties
 - _id (custom ids)
-- firs_tname
+- first_name
 - last_name
 - email
 - phone
