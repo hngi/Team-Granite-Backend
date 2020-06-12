@@ -8,14 +8,14 @@ const swaggerUi = require('swagger-ui-express')
 
 const app = express();
 const port = process.env.PORT || 5000;
-const connectToDatabase = require("./db"); // require('./src/db/mongoose');
+const connectToDatabase = require('./src/db/mongoose');
 
 dotenv.config();
-//connectToDatabase(); //This removed to simplify the connection
+ connectToDatabase(); //This removed to simplify the connection
 
 
 
-app.get('/', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
+app.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
