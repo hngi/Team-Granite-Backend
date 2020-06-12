@@ -30,7 +30,7 @@ const company = {
             }
 
     },
-    setUserFirstName: async (req, res) => {
+    setUserTeamName: async (req, res) => {
         try{
             const user = await userModel.findOneAndUpdate({ _id: req.params.id })
             const team = await teamModel.findone(name)
