@@ -5,7 +5,7 @@ A Dockerized User Management App
 - Fork this repository
 - Clone to your local machine
 - `cd` into the repository and run `npm install && npm start`
-- The app will be running on `localhost:5000`
+- The app will be running on `localhost:5000/api/v1`
 - View the documentation at `localhost:5000/api-docs`
 
 ## Contribute guide
