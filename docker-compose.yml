@@ -16,7 +16,7 @@ services:
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
     ports:
-      - "8001:5000"
+      - "7501:5000"
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
