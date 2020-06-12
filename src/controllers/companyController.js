@@ -1,6 +1,7 @@
 const companyModel = require( '../models/company');
 const teamModel = require('../models/team');
 const userModel = require('../models/user');
+const { errHandler } = require('../handlers/errorHandlers');
 
 const company = {
     getCompanyName: async (req, res) => {
@@ -19,7 +20,7 @@ const company = {
         if(!team) return res.status(404).json({status: 'Failed', message: "Team name not found", data: null })
         res.json({status: 'Success', message: "User team name", data: team.name})
     },
-    getTeamMembers: (req, res) =>{
+    getTeamMembers: async(req, res) =>{
         try{
             const team = await teamModel.findone(name)
                 if(!team) return res.status(404).json({status: 'Failed', message: "No team members found", data: null })
@@ -30,7 +31,7 @@ const company = {
             }
 
     },
-    setUserFirstName: async (req, res) => {
+    setUserTeamName: async (req, res) => {
         try{
             const user = await userModel.findOneAndUpdate({ _id: req.params.id })
             const team = await teamModel.findone(name)
@@ -44,3 +45,5 @@ const company = {
         }
     }
 };
+
+module.exports = company;
