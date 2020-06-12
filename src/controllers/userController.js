@@ -2,12 +2,44 @@ const env = require( 'dotenv');
 const sharp = require('sharp');
 
 const userModel = require( '../models/user');
+const serviceUser = require('../models/service_user')
+const jwtUtil = require('../security/jwtAuth')
 const { errHandler } = require('../handlers/errorHandlers');
 
 env.config();
 
 
 const user = {
+
+    addServiceUser: (req,res) => {
+        const email = req.query.email;
+        const newUser = new serviceUser({
+            email,
+            apiKey: jwtUtil.generateApiKey()
+        })
+        newUser.save().then((user) => {
+            res.json({status: 'Success', message: `Created Service User`, data: user})
+        }).catch((e) => {
+            res.status(400).json({status: 'Failed', message: `${e.message}`, data: null})
+        })
+    },
+
+    generateToken: async (req,res) => {
+        const email = req.query.email;
+        await serviceUser.findOne({email}).then((user) => {
+
+            if (!user){
+                res.status(400).json({status: 'Failed', message: `User was Not found`, data: null})
+                return;
+            }
+
+            try {
+                res.json({status: 'Success', message: `Generated Token for ${email}`, data: jwtUtil.createToken(user.email, user.apiKey)});
+            }catch (e) {
+                res.status(400).json({status: 'Failed', message: `${e.message}`, data: null})
+            }
+        });
+    },
 
     getAllUsers: (req, res) => {
         userModel.find().select(['-avatar'])
