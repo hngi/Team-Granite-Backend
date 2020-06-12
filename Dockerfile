@@ -12,12 +12,9 @@ USER node
 
 RUN npm install
 
-RUN npm install --save swagger-ui-express
-RUN npm install --save sharp
 COPY --chown=node:node . .
 
-#RUN ls -lh /usr/local/bin/docker-entrypoint.sh
-#RUN cat /usr/local/bin/docker-entrypoint.sh
+RUN npm install --save swagger-ui-express sharp jsonwebtoken
 
 EXPOSE 5000
 
