@@ -28,7 +28,7 @@ const openApiDocumentation = {
         'bearerAuth': {}
     },
     paths: {
-        '/api/v1/token': {
+        '/v1/token': {
             get:{
                 tags: ['API Auth'],
                 description: 'Generate Token',
@@ -68,7 +68,7 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/api/v1/addServiceUser': {
+        '/v1/addServiceUser': {
             post:{
                 tags: ['API Auth'],
                 description: 'Add Service User',
@@ -108,7 +108,7 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/api/v1/users': {
+        '/v1/users': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get All Users',
@@ -143,7 +143,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/api/v1/user': {
+        '/v1/user': {
             post:{
                 tags: ['CRUD Operations'],
                 description: 'Add new User',
@@ -188,7 +188,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/api/v1/user/{id}': {
+        '/v1/user/{id}': {
             delete: {
                 tags: ['CRUD Operations'],
                 description: 'Delete User',
@@ -304,7 +304,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/api/v1/users/{id}/firstName': {
+        '/v1/users/{id}/firstName': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User First Name',
@@ -390,7 +390,7 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/api/v1/users/{id}/lastName': {
+        '/v1/users/{id}/lastName': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Last Name',
@@ -477,7 +477,7 @@ const openApiDocumentation = {
             },
 
         },
-        '/api/v1/users/{id}/email': {
+        '/v1/users/{id}/email': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User email',
@@ -564,7 +564,7 @@ const openApiDocumentation = {
             },
 
         },
-        '/api/v1/users/{id}/phone': {
+        '/v1/users/{id}/phone': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Phone',
@@ -650,7 +650,7 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/api/v1/users/{id}/age': {
+        '/v1/users/{id}/age': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Age',
@@ -736,7 +736,7 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/api/v1/users/{id}/status': {
+        '/v1/users/{id}/status': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Status',
@@ -823,7 +823,7 @@ const openApiDocumentation = {
             },
 
         },
-        '/api/v1/users/{id}/gender': {
+        '/v1/users/{id}/gender': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Gender',
@@ -909,7 +909,7 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/api/v1/users/{id}/address': {
+        '/v1/users/{id}/address': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get User Address',
@@ -995,7 +995,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/api/v1/users/{id}/active': {
+        '/v1/users/status/active': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get Active User Status',
@@ -1039,7 +1039,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/api/v1/users/{id}/inactive': {
+        '/v1/users/status/inactive': {
                 get: {
                     tags: ['CRUD Operations'],
                     description: 'Get Status of inActive Users',
@@ -1083,7 +1083,7 @@ const openApiDocumentation = {
                     }
                 }
             },
-        '/api/v1/users/{id}/intern': {
+        '/v1/users/level/intern': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get Intern Users',
@@ -1169,7 +1169,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/api/v1/users/{id}/mentor': {
+        '/v1/users/level/mentor': {
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get Mentor Users',
@@ -1286,6 +1286,9 @@ const openApiDocumentation = {
                     gender: {
                         type: 'string',
                         enum: ['MALE','FEMALE']
+                    },
+                    address: {
+                        type: 'string',
                     }
                 }
             },

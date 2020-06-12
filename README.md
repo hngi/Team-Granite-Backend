@@ -5,8 +5,8 @@ A Dockerized User Management App
 - Fork this repository
 - Clone to your local machine
 - `cd` into the repository and run `npm install && npm start`
-- The app will be running on `localhost:5000/api/v1`
-- View the documentation at `localhost:5000/api-docs`
+- The app will be running on `localhost:5000/v1`
+- View the documentation at `localhost:5000/v1/api-docs`
 
 ## Using the service
 - Open Postman and enter the base url followed by `/addServiceUser?email=youremail` (use your email as query parameter) to get registered on the service

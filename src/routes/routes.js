@@ -9,7 +9,7 @@ const auth = require('../middleware/auth')
 // GET response for '/'
 router.get('/', (req, res) => {
     
-    res.redirect('/api-docs');
+    res.redirect('/v1/api-docs');
 })
 
 //generate token
@@ -19,10 +19,10 @@ router.get('/token', newUser.generateToken);
 router.post('/addServiceUser', newUser.addServiceUser);
 
 //Add user
-router.post('/user',auth, newUser.addUser);
+router.post('/users',auth, newUser.addUser);
 
 //remove user
-router.delete('/user/:id',auth, newUser.removeUser);
+router.delete('/users/:id',auth, newUser.removeUser);
 
 //Get All users
 router.get('/users',auth, newUser.getAllUsers);
