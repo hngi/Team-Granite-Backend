@@ -77,7 +77,7 @@ const user = {
         userModel.findOne({_id: req.params.id}).then(user => res.json({status: 'Success', message: 'User phone number', data: user.phone}))
         .catch((err) => res.status(400).json({status: 'Failed', message: 'An Error Occurred', data: null}));
     }, 
-    changeUserEmail: (req, res) =>{
+    setUserEmail: (req, res) =>{
         userModel.findOne({_id: req.params.id}).then(user => res.json({status: 'Success', message: 'User email updated successfully', data: user.email}))
         .catch((err) => res.status(400).json({status: 'Failed', message: 'An Error Occurred', data: null}));
     },
