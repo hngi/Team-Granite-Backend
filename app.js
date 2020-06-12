@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const dotenv = require('dotenv');
 const helmet = require('helmet');
 const router =  require('./src/routes/routes');
@@ -14,11 +15,15 @@ dotenv.config();
 connectToDatabase();
 
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
-
-app.use('/', router);
+app.use('/src', express.static('img'))
+app.get('/postman', (req, res) =>{
+    res.sendFile(path.join(__dirname, '/src/public', 'index.html'));
+});
+app.use('/v1', router);
+app.use('/', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 
 app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));
