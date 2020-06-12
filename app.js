@@ -23,8 +23,5 @@ app.use('/', router);
 
 app.use('/src', express.static('img'))
 
-app.get('/postman', (req, res) =>{
-    res.sendFile(path.join(__dirname, '/src/public', 'index.html'));
-});
 
 app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));
