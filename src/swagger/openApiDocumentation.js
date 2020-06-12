@@ -1082,7 +1082,179 @@ const openApiDocumentation = {
                         }
                     }
                 }
+            },
+        '/users/{id}/intern': {
+            get: {
+                tags: ['CRUD Operations'],
+                description: 'Get Intern Users',
+                operationId: 'getInternUsers',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+            put: {
+                tags: ['CRUD Operations'],
+                description: 'Set Intern Users',
+                operationId: 'setInternUsers',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+            },
+            responses: {
+                '200': {
+                    description: 'Success',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                },
+                '400': {
+                    description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                }
             }
+        },
+        '/users/{id}/mentor': {
+            get: {
+                tags: ['CRUD Operations'],
+                description: 'Get Mentor Users',
+                operationId: 'getMentorUsers',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+            put: {
+                tags: ['CRUD Operations'],
+                description: 'Set Mentor Users',
+                operationId: 'setMentorUsers',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+            },
+            responses: {
+                '200': {
+                    description: 'Success',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                },
+                '400': {
+                    description: 'Bad Request',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Response'
+                            },
+                        },
+                    },
+                }
+            }
+        }
     },
             
         
