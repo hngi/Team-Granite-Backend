@@ -11,17 +11,17 @@ const port = process.env.PORT || 5000;
 const connectToDatabase = require('./src/db/mongoose');
 
 dotenv.config();
- connectToDatabase(); //This removed to simplify the connection
+ connectToDatabase();
 
 
 
-app.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use('/v1', router);
+app.use('/', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 
-app.use('/src', express.static('img'))
+
 
 
 app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));

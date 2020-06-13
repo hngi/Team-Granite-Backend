@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const newUser = require('../controllers/userController');
+const company = require('../controllers/companyController');
 const upload = require('../controllers/upload');
 const auth = require('../middleware/auth')
 
@@ -9,7 +10,7 @@ const auth = require('../middleware/auth')
 // GET response for '/'
 router.get('/', (req, res) => {
     
-    res.redirect('/v1/api-docs');
+    res.redirect('/');
 })
 
 //generate token
@@ -104,6 +105,9 @@ router.put('/users/:id/avatar',auth, upload.single('avatar'), newUser.setUserAva
 
 //Delete Avatar
 router.delete('/users/:id/avatar',auth, newUser.removeUserAvatar);
+
+//Add Companies
+router.post('/companies/:id/team', auth, company.setUserTeamName);
 
 
 module.exports= router;
