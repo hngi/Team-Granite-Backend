@@ -62,7 +62,8 @@ const user = {
         }
     },
     addUser: async (req, res) => {
-        const { firstName, lastName, email, phone, age, status, address, gender } = req.body;
+        const { firstName, lastName, email, phone, age, status, address } = req.body;
+        const gender = req.body.gender.toLowerCase();
         try{
             const newUser = new userModel({firstName, lastName, email, phone, age, status, address, gender});
             await newUser.save()
