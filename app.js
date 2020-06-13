@@ -7,7 +7,7 @@ const openApiDocumentation = require('./src/swagger/openApiDocumentation')
 const swaggerUi = require('swagger-ui-express')
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 6000;
 const connectToDatabase = require('./src/db/mongoose');
 
 dotenv.config();
@@ -20,8 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use('/v1', router);
 
-
-
-
+app.get('/', (req,res) => {
+   res.redirect('/api-docs')
+})
 
 app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));

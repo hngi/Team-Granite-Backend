@@ -17,5 +17,5 @@ const connectToDatabase = () => {
     mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 };
 //,
-//
+//mongo:
 module.exports= connectToDatabase;

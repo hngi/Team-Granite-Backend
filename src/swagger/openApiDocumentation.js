@@ -20,7 +20,10 @@ const openApiDocumentation = {
             name: 'API Auth'
         },
         {
-            name: 'CRUD Operations'
+            name: 'User CRUD Operations'
+        },
+        {
+            name: 'Company CRUD Operations'
         }
 
     ],
@@ -231,36 +234,6 @@ const openApiDocumentation = {
                     }
                 }
             },
-            // put: {
-            //     tags: ['CRUD Operations'],
-            //     description: 'Update User',
-            //     operationId: 'updateUser',
-            //     parameters: [
-            //         {
-            //             name: 'id',
-            //             in: 'path',
-            //             schema: {
-            //                 type: 'string',
-            //             },
-            //             required: true,
-            //         }
-            //     ],
-            //     responses: {
-            //         '200': {
-            //             description: 'Success',
-            //             content: {
-            //                 'application/json': {
-            //                     schema: {
-            //                         type: 'string'
-            //                     },
-            //                 },
-            //             },
-            //         },
-            //         '400': {
-            //             description: 'Bad Request',
-            //         }
-            //     }
-            // },
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get a User',
@@ -1083,7 +1056,59 @@ const openApiDocumentation = {
                     }
                 }
             },
-        },
+        '/v1/companies/teams/{teamId}/users/{userId}':{
+            get:{
+                tags: ['Company CRUD Operations'],
+                description: 'Add User to A Team',
+                operationId: 'addUserToTeam',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'teamId',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    },
+                    {
+                        name: 'userId',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+        }
+    },
             
         
     components: {
