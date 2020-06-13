@@ -74,6 +74,9 @@ const UserSchema = new Schema({
     },
     team:{
         type: String,
+    },
+    company:{
+        type: String
     }
     
 });

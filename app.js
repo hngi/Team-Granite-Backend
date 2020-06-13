@@ -14,12 +14,12 @@ dotenv.config();
  connectToDatabase();
 
 
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use('/v1', router);
-app.use('/', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
+
 
 
 
