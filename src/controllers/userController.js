@@ -2,12 +2,44 @@ const env = require( 'dotenv');
 const sharp = require('sharp');
 
 const userModel = require( '../models/user');
+const serviceUser = require('../models/service_user')
+const jwtUtil = require('../security/jwtAuth')
 const { errHandler } = require('../handlers/errorHandlers');
 
 env.config();
 
 
 const user = {
+
+    addServiceUser: (req,res) => {
+        const email = req.body.email;
+        const newUser = new serviceUser({
+            email,
+            apiKey: jwtUtil.generateApiKey()
+        })
+        newUser.save().then((user) => {
+            res.json({status: 'Success', message: `Created Service User`, data: user})
+        }).catch((e) => {
+            res.status(400).json({status: 'Failed', message: `${e.message}`, data: null})
+        })
+    },
+
+    generateToken: async (req,res) => {
+        const email = req.query.email;
+        await serviceUser.findOne({email}).then((user) => {
+
+            if (!user){
+                res.status(400).json({status: 'Failed', message: `User was Not found`, data: null})
+                return;
+            }
+
+            try {
+                res.json({status: 'Success', message: `Generated Token for ${email}`, data: jwtUtil.createToken(user.email, user.apiKey)});
+            }catch (e) {
+                res.status(400).json({status: 'Failed', message: `${e.message}`, data: null})
+            }
+        });
+    },
 
     getAllUsers: (req, res) => {
         userModel.find().select(['-avatar'])
@@ -199,7 +231,7 @@ const user = {
         try{
             const user = await userModel.findOne({_id: req.params.id})
             if(!user) return res.status(404).json({status: 'Failed', message: "user not found", data: null })
-            res.json({status: 'Success', message: "User gender", data: user.address})
+            res.json({status: 'Success', message: "User address", data: user.address})
         }
         catch(err){
             errHandler(err, res)
@@ -218,24 +250,6 @@ const user = {
         try{
             const users =  await userModel.find({ status: 'INACTIVE'}).select(['-avatar'])
             res.json({status: 'Success', message: 'List of inactive users', data: users})
-        }
-        catch(err){
-            errHandler(err, res)
-        }
-    },
-    getInternUsers: async (req, res) => {
-        try{
-            const users =  await userModel.find({ level: 'INTERN'}).select(['-avatar'])
-            res.json({status: 'Success', message: 'List of interns', data: users})
-        }
-        catch(err){
-            errHandler(err, res)
-        }
-    },
-    getMentorUsers: async (req, res) => {
-        try{
-            const users =  await userModel.find({ level: 'MENTOR'}).select(['-avatar'])
-            res.json({status: 'Success', message: 'List of mentors', data: users})
         }
         catch(err){
             errHandler(err, res)

@@ -62,11 +62,6 @@ const UserSchema = new Schema({
         enum: ['ACTIVE', 'INACTIVE'],
         default: 'ACTIVE'
     },
-    level: {
-        type: String,
-        enum: ['MENTOR', 'INTERN'],
-        default: 'INTERN',
-    },
     updated: { 
         type: Date,
     },
@@ -76,6 +71,12 @@ const UserSchema = new Schema({
     url: {
         type: String,
         default: "N/A"
+    },
+    team:{
+        type: String,
+    },
+    company:{
+        type: String
     }
     
 });

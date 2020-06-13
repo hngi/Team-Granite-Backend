@@ -8,22 +8,20 @@ const swaggerUi = require('swagger-ui-express')
 
 const app = express();
 const port = process.env.PORT || 5000;
-
-import connectToDatabase  from'./src/db/mongoose';
+const connectToDatabase = require('./src/db/mongoose');
 
 dotenv.config();
-connectToDatabase();
+ connectToDatabase();
 
 
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
-app.use('/src', express.static('img'))
-app.get('/postman', (req, res) =>{
-    res.sendFile(path.join(__dirname, '/src/public', 'index.html'));
-});
 app.use('/v1', router);
-app.use('/', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
+
+
+
+
 
 app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));

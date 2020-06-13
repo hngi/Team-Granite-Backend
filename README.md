@@ -5,8 +5,14 @@ A Dockerized User Management App
 - Fork this repository
 - Clone to your local machine
 - `cd` into the repository and run `npm install && npm start`
-- The app will be running on `localhost:5000`
-- View the documentation at `localhost:5000/api-docs`
+- The app will be running on `localhost:5000/v1`
+- View the documentation at `localhost:5000/v1/api-docs`
+
+## Using the service
+- Open Postman and enter the base url followed by `/addServiceUser?email=youremail` (use your email as query parameter) to get registered on the service
+- Generate a token by entering base url followed by `/token?email=youremail` to generate a token
+- Copy the generated token and add it to Auth bearer in the authorization panel
+- Test by getting the list of users i.e` GET - http://base_url/users`
 
 ## Contribute guide
 If you're in team-granite-backend:
