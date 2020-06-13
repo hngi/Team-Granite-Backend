@@ -11,17 +11,22 @@ env.config();
 
 const user = {
 
-    addServiceUser: (req,res) => {
-        const email = req.body.email;
-        const newUser = new serviceUser({
-            email,
-            apiKey: jwtUtil.generateApiKey()
-        })
-        newUser.save().then((user) => {
-            res.json({status: 'Success', message: `Created Service User`, data: user})
-        }).catch((e) => {
+    addServiceUser: (req, res) => {
+        try {
+            const email = req.body.email;
+            const newUser = new serviceUser({
+                email,
+                apiKey: jwtUtil.generateApiKey()
+            })
+            newUser.save().then((user) => {
+                res.json({status: 'Success', message: `Created Service User`, data: user})
+            }).catch((e) => {
+                res.status(400).json({status: 'Failed', message: `${e.message}`, data: null})
+            })
+        }catch (e) {
             res.status(400).json({status: 'Failed', message: `${e.message}`, data: null})
-        })
+        }
+        
     },
 
     generateToken: async (req,res) => {
