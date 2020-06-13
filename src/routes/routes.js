@@ -7,7 +7,7 @@ const upload = require('../controllers/upload');
 const auth = require('../middleware/auth')
 
 
-// GET response for '/'
+// GET response for '/' and redirect to documentation page
 router.get('/', (req, res) => {
     
     res.redirect('/api-docs');
