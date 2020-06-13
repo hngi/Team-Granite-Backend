@@ -12,6 +12,11 @@ const TeamSchema = new Schema({
         type: [{type: mongoose.Schema.Types.ObjectId, ref: 'user'}],
         required: true,
 
+    },
+    company: {
+        type:String,
+        default: "GRANITE",
+        required: true
     }
 });
 TeamSchema.pre('save', function(next) {

@@ -3,13 +3,12 @@ const mongoose = require('mongoose');
 const CompanySchema = mongoose.Schema({
     name:{ 
         type: String,
-        default: "Granite"
+        default: "GRANITE"
     },
-    team : {
-        type: String,
-        name: mongoose.Schema.Types.String, ref: 'team', 
+    teams : [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'team',
         required: true 
-    },
+    }],
 },
 {
     timestamps: true
