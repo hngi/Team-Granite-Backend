@@ -37,16 +37,15 @@ const openApiDocumentation = {
                 description: 'Add Service User',
                 operationId: 'addServiceUser',
                 security: [],
-                parameters: [
-                    {
-                        name: 'email',
-                        in: 'body',
-                        schema: {
-                            type: 'json',
-                        },
-                        required: true,
+                requestBody:{
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/ServiceUser'
+                            }
+                        }
                     }
-                ],
+                },
                 responses: {
                     '200': {
                         description: 'Success',
@@ -1613,6 +1612,15 @@ const openApiDocumentation = {
                 type: 'array',
                 items: {
                     $ref: '#/components/schemas/User'
+                }
+            },
+            ServiceUser:{
+                type: 'object',
+                properties:{
+                    email:{
+                        type: 'string',
+                        description: 'User Email'
+                    }
                 }
             },
             Response: {
