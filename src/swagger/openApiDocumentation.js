@@ -77,9 +77,9 @@ const openApiDocumentation = {
                 parameters: [
                     {
                         name: 'email',
-                        in: 'query',
+                        in: 'body',
                         schema: {
-                            type: 'string',
+                            type: 'json',
                         },
                         required: true,
                     }

@@ -12,7 +12,7 @@ env.config();
 const user = {
 
     addServiceUser: (req,res) => {
-        const email = req.query.email;
+        const email = req.body.email;
         const newUser = new serviceUser({
             email,
             apiKey: jwtUtil.generateApiKey()

@@ -7,7 +7,7 @@ const upload = require('../controllers/upload');
 const auth = require('../middleware/auth')
 
 
-// GET response for '/'
+// GET response for '/' and redirect to documentation page
 router.get('/', (req, res) => {
     
     res.redirect('/api-docs');
@@ -92,7 +92,7 @@ router.get('/users/status/active',auth, newUser.getActiveUsers);
 router.get('/users/status/inactive',auth, newUser.getInActiveUsers);
 
 //get non admin users
-router.get('/users/level/intern',auth, newUser.getInternUsers);
+// router.get('/users/level/intern',auth, newUser.getInternUsers);
 
 //get mentor users
 //router.get('/users/level/mentor',auth, newUser.getMentorUsers);
