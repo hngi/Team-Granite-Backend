@@ -29,7 +29,7 @@ router.delete('/users/:id',auth, newUser.removeUser);
 router.get('/users',auth, newUser.getAllUsers);
 
 //Get User
-router.get('/user/:id',auth, newUser.getUser);
+router.get('/users/:id',auth, newUser.getUser);
 
 //Get first name
 router.get('/users/:id/firstName',auth, newUser.getUserFirstName);
@@ -91,12 +91,6 @@ router.get('/users/status/active',auth, newUser.getActiveUsers);
 //get inactive users
 router.get('/users/status/inactive',auth, newUser.getInActiveUsers);
 
-//get non admin users
-// router.get('/users/level/intern',auth, newUser.getInternUsers);
-
-//get mentor users
-//router.get('/users/level/mentor',auth, newUser.getMentorUsers);
-
 //Get Avatar
 router.get('/users/:id/avatar',auth, newUser.getUserAvatar);
 
@@ -113,7 +107,7 @@ router.post('/companies/teams/:id/users', auth, company.setUserTeamName);
 router.get('/companies/teams/:id/users',auth, company.getUserTeam);
 
 //Get a users company
-router.get('/companies/:id/user', auth, company.getUserCompany);
+router.get('/companies/:id/users', auth, company.getUserCompany);
 
 //Add user to a company
 router.post('/companies/:id/users', auth, company.setUserCompanyName);
