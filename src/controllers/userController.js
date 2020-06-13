@@ -11,17 +11,22 @@ env.config();
 
 const user = {
 
-    addServiceUser: (req,res) => {
-        const {email} = req.body;
-        const newUser = new serviceUser({
-            email,
-            apiKey: jwtUtil.generateApiKey()
-        })
-        newUser.save().then((user) => {
-            res.json({status: 'Success', message: `Created Service User`, data: user})
-        }).catch((e) => {
+    addServiceUser: (req, res) => {
+        try {
+            const email = req.body.email;
+            const newUser = new serviceUser({
+                email,
+                apiKey: jwtUtil.generateApiKey()
+            })
+            newUser.save().then((user) => {
+                res.json({status: 'Success', message: `Created Service User`, data: user})
+            }).catch((e) => {
+                res.status(400).json({status: 'Failed', message: `${e.message}`, data: null})
+            })
+        }catch (e) {
             res.status(400).json({status: 'Failed', message: `${e.message}`, data: null})
-        })
+        }
+        
     },
 
     generateToken: async (req,res) => {
@@ -57,9 +62,10 @@ const user = {
         }
     },
     addUser: async (req, res) => {
-        const { firstName, lastName, email, phone, age, status, address, gender, level } = req.body;
+        const { firstName, lastName, email, phone, age, status, address } = req.body;
+        const gender = req.body.gender.toLowerCase();
         try{
-            const newUser = new userModel({firstName, lastName, email, phone, age, status, address, gender, level});
+            const newUser = new userModel({firstName, lastName, email, phone, age, status, address, gender});
             await newUser.save()
             res.json({status: 'Success', message: 'New user created!', data: newUser})
         }
