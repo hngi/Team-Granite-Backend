@@ -62,9 +62,9 @@ const user = {
         }
     },
     addUser: async (req, res) => {
-        const { firstName, lastName, email, phone, age, status, address, gender, level } = req.body;
+        const { firstName, lastName, email, phone, age, status, address, gender } = req.body;
         try{
-            const newUser = new userModel({firstName, lastName, email, phone, age, status, address, gender, level});
+            const newUser = new userModel({firstName, lastName, email, phone, age, status, address, gender});
             await newUser.save()
             res.json({status: 'Success', message: 'New user created!', data: newUser})
         }
