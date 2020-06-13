@@ -45,6 +45,4 @@ const company = {
         }
     }
 };
-
 module.exports = company;
-

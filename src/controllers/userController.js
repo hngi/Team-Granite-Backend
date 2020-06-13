@@ -255,24 +255,6 @@ const user = {
             errHandler(err, res)
         }
     },
-    getInternUsers: async (req, res) => {
-        try{
-            const users =  await userModel.find({ level: 'INTERN'}).select(['-avatar'])
-            res.json({status: 'Success', message: 'List of interns', data: users})
-        }
-        catch(err){
-            errHandler(err, res)
-        }
-    },
-    getMentorUsers: async (req, res) => {
-        try{
-            const users =  await userModel.find({ level: 'MENTOR'}).select(['-avatar'])
-            res.json({status: 'Success', message: 'List of mentors', data: users})
-        }
-        catch(err){
-            errHandler(err, res)
-        }
-    },
     getUserAvatar: async (req, res)=>{
         try{
             const user = await userModel.findById(req.params.id)
