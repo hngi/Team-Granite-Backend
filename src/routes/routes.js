@@ -91,12 +91,6 @@ router.get('/users/status/active',auth, newUser.getActiveUsers);
 //get inactive users
 router.get('/users/status/inactive',auth, newUser.getInActiveUsers);
 
-//get non admin users
-// router.get('/users/level/intern',auth, newUser.getInternUsers);
-
-//get mentor users
-//router.get('/users/level/mentor',auth, newUser.getMentorUsers);
-
 //Get Avatar
 router.get('/users/:id/avatar',auth, newUser.getUserAvatar);
 
