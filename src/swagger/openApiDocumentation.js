@@ -28,18 +28,18 @@ const openApiDocumentation = {
         'bearerAuth': {}
     },
     paths: {
-        '/v1/token': {
-            get:{
+        '/v1/addServiceUser': {
+            post:{
                 tags: ['API Auth'],
-                description: 'Generate Token',
-                operationId: 'generateToken',
+                description: 'Add Service User',
+                operationId: 'addServiceUser',
                 security: [],
                 parameters: [
                     {
                         name: 'email',
-                        in: 'query',
+                        in: 'body',
                         schema: {
-                            type: 'string',
+                            type: 'json',
                         },
                         required: true,
                     }
@@ -68,18 +68,18 @@ const openApiDocumentation = {
                 }
             },
         },
-        '/v1/addServiceUser': {
-            post:{
+        '/v1/token': {
+            get:{
                 tags: ['API Auth'],
-                description: 'Add Service User',
-                operationId: 'addServiceUser',
+                description: 'Generate Token',
+                operationId: 'generateToken',
                 security: [],
                 parameters: [
                     {
                         name: 'email',
-                        in: 'body',
+                        in: 'query',
                         schema: {
-                            type: 'json',
+                            type: 'string',
                         },
                         required: true,
                     }
