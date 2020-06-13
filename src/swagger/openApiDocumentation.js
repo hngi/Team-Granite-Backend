@@ -143,7 +143,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/v1/user': {
+        '/v1/users': {
             post:{
                 tags: ['CRUD Operations'],
                 description: 'Add new User',
@@ -188,7 +188,7 @@ const openApiDocumentation = {
                 }
             }
         },
-        '/v1/user/{id}': {
+        '/v1/users/{id}': {
             delete: {
                 tags: ['CRUD Operations'],
                 description: 'Delete User',
