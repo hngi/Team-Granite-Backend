@@ -94,36 +94,47 @@ router.put('/users/:id/avatar',auth, upload.single('avatar'), newUser.setUserAva
 router.delete('/users/:id/avatar',auth, newUser.removeUserAvatar);
 
 //Add user to a team
-router.post('/companies/teams/:id/users', auth, company.setUserTeamName);
+//done
+router.post('/companies/teams/:teamId/users/:userId', auth, company.setUserTeam);
 
 //Get a users team
-router.get('/companies/teams/:id/users',auth, company.getUserTeam);
+//done
+router.get('/companies/teams/users/:id',auth, company.getUserTeam);
 
 //Get a users company
-router.get('/companies/:id/users', auth, company.getUserCompany);
+//done
+router.get('/companies/user/:id', auth, company.getUserCompany);
 
 //Add user to a company
-router.post('/companies/:id/users', auth, company.setUserCompanyName);
+//done
+router.post('/companies/:companyId/users/:userId', auth, company.setUserCompany);
 
 //Create new company
+//done
 router.post('/companies', auth, company.createCompany);
 
 //create a new team
+//done
 router.post('/companies/:id/teams', auth, company.createTeam);
 
 //Get All companies
+//done
 router.get('/companies', auth, company.getAllCompanies);
 
 //Get a company
-router.get('/companies/:id', auth, company.getCompanyName);
+//done
+router.get('/companies/:id', auth, company.getCompany);
 
 //Get users
+//done
 router.get('/companies/:id/users', auth, company.getCompanyMembers);
 
 //Get team members
-router.get('/companies/team/users', auth, company.getTeamMembers);
+//done
+router.get('/companies/team/:id/users', auth, company.getTeamMembers);
 
 //Get Teams under a company
+//done
 router.get('/companies/:id/teams', auth, company.getAllTeams);
 
 

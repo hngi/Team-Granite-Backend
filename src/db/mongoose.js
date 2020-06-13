@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const connectToDatabase = () => {
 	
-    mongoose.connect(process.env.ATLAS_URI, {
+    mongoose.connect(process.env.LOCAL_MONGO_DB_URL, {
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true,
@@ -17,5 +17,5 @@ const connectToDatabase = () => {
     mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 };
 //,
-//
+//mongo:
 module.exports= connectToDatabase;

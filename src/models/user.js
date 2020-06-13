@@ -73,10 +73,12 @@ const UserSchema = new Schema({
         default: "N/A"
     },
     team:{
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'team'
     },
     company:{
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'company'
     }
     
 });

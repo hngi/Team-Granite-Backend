@@ -19,8 +19,8 @@ app.use(helmet());
 app.use('/v1/', router);
 app.use('/', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 
-
-
-
+app.get('/', (req,res) => {
+   res.redirect('/api-docs')
+})
 
 app.listen(port, () => console.log(`Team Granite App is running on port: ${port}`));

@@ -1,14 +1,22 @@
 const companyModel = require( '../models/company');
 const teamModel = require('../models/team');
 const userModel = require('../models/user');
+const ObjectId = require('mongodb').ObjectID
 const { errHandler } = require('../handlers/errorHandlers');
 
 const company = {
     createTeam: async (req, res) => {
         const { name } = req.body;
+        const companyId = req.params.id
         try{
             const newTeam = new teamModel({name});
             await newTeam.save()
+
+            const company = await companyModel.findOne({_id: companyId})
+
+            company.teams = company.teams.concat(newTeam)
+            await company.save()
+
             res.json({status: 'Success', message: 'New team created!', data: newTeam})
         }
         catch(err){
@@ -26,11 +34,12 @@ const company = {
             errHandler(err, res)
         }
     },
-    getCompanyName: async (req, res) => {
+    getCompany: async (req, res) => {
+        const companyId = req.params.id
         try{
-        const company = await companyModel.findOne({id:req.params.id})
-            if(!company) return res.status(404).json({status: 'Failed', message: "Company name not found", data: null })
-            res.json({status: 'Success', message: "Company name", data: company.name})
+            const company = await companyModel.findOne({_id: companyId})
+            if(!company) return res.status(404).json({status: 'Failed', message: "Company not found", data: null })
+            res.json({status: 'Success', message: "Company", data: company})
         }
         catch(err){
             errHandler(err, res)
@@ -38,77 +47,127 @@ const company = {
         
     },
     getAllCompanies: (req, res) => {
-        companyModel.find().populate('teams').exec()
+        companyModel.find()
           .then((companies) => res.json({status: 'Success', message: 'List of Companies', data: companies}))
           .catch(err => res.status(400).json({status: 'Failed', message: err.message, data: null}));
     },
-    getAllTeams: (req, res) => {
-        teamModel.find()
-          .then((teams) => res.json({status: 'Success', message: 'List of Teams', data: teams}))
-          .catch(err => res.status(400).json({status: 'Failed', message: err.message, data: null}));
+    getAllTeams: async (req, res) => {
+
+        const companyId = req.params.id
+
+        try {
+            const company = await companyModel.findById(companyId)
+            if(!company) return res.status(404).json({status: 'Failed', message: "Company not found", data: null })
+
+            const companyTeams = []
+            for (let teamId in company.teams) {
+                companyTeams[teamId] = await teamModel.findById(company.teams[teamId])
+            }
+
+            res.json({status: 'Success', message: 'List of Teams', data: companyTeams})
+
+        }catch (err) {
+            errHandler(err,req)
+        }
     },
     getUserTeam: async(req, res) =>{
         const user = await userModel.findOne({_id: req.params.id})
-        if(!user) return res.status(404).json({status: 'Failed', message: "Team name not found", data: null })
-        res.json({status: 'Success', message: "User team name", data: user.team})
+        if(!user) return res.status(404).json({status: 'Failed', message: "User not found", data: null })
+        const team = await teamModel.findById(user.team)
+        if(!team) return res.status(404).json({status: 'Failed', message: "Team not found", data: null })
+        res.json({status: 'Success', message: "User team name", data: team})
     },
     getUserCompany: async(req, res) =>{
         const user = await userModel.findOne({_id: req.params.id})
-        if(!user) return res.status(404).json({status: 'Failed', message: "Company name not found", data: null })
-        res.json({status: 'Success', message: "User company name", data: user.company})
+        if(!user) return res.status(404).json({status: 'Failed', message: "User not found", data: null })
+
+        const company = await companyModel.findById(user.company)
+        if(!company) return res.status(404).json({status: 'Failed', message: "Company not found", data: null })
+
+        res.json({status: 'Success', message: "User company", data: company})
     },
     getTeamMembers: async(req, res) =>{
-        const {name} = req.body;
+        const teamId = req.params.id
         try{
-            const team = await teamModel.findOne({name})
-                if(!team) return res.status(404).json({status: 'Failed', message: "No team members found", data: null })
-                res.json({status: 'Success', message: "Team members", data: team.users})
-            }
-            catch(err){
-                errHandler(err, res)
+            const team = await teamModel.findById(teamId)
+            if(!team) return res.status(404).json({status: 'Failed', message: "Team Not Found", data: null })
+
+            const teamMembers = []
+
+            for (let userId in team.users) {
+                teamMembers[userId] = await userModel.findById(team.users[userId])
             }
 
-    },
-    getCompanyMembers: async(req, res) =>{
-        const {name} = req.body;
-        try{
-            const company = await companyModel.findOne({name}).populate('users')
-                if(!company) return res.status(404).json({status: 'Failed', message: "No team members found", data: null })
-                res.json({status: 'Success', message: "Company members", data: company.users})
-            }
-            catch(err){
-                errHandler(err, res)
-            }
-
-    },
-    setUserCompanyName: async (req, res) =>{
-        const { name } = req.body;
-        try{
-            const user = await userModel.findOneAndUpdate({id: req.params.id })
-            const company = new companyModel({name})
-            company.save();
-            user.company = name;
-            user.save();
-            if(!user) return res.status(404).json({status: 'Failed',  data: null })
-            res.status(200).json({status: 'Success', message: 'User company updated!', data: user.team})
+            res.json({status: 'Success', message: "Team members", data: teamMembers})
         }
         catch(err){
             errHandler(err, res)
         }
 
     },
-    setUserTeamName: async (req, res) => {
-        const teamNames = ['RED', 'BLUE', 'GREEN', 'GOLD'];
-        const randomTeam = teamNames[Math.floor(Math.random() * teamNames.length)];
-        console.log(randomTeam);
+    getCompanyMembers: async(req, res) =>{
+        const companyId = req.params.id
         try{
-            const user = await userModel.findOneAndUpdate({id: req.params.id })
-            const newteam = new teamModel({name: randomTeam})
-            newteam.save();
-            user.team = randomTeam;
-            user.save();
-            if(!user) return res.status(404).json({status: 'Failed',  data: null })
-            res.status(200).json({status: 'Success', message: 'Team name updated!', data: user.team})
+            const company = await companyModel.findById(companyId)
+            if(!company) return res.status(404).json({status: 'Failed', message: "Company not Found", data: null })
+
+            const companyUsers = []
+
+            for (let userId in company.users) {
+                companyUsers[userId] = await userModel.findById(company.users[userId])
+            }
+
+            res.json({status: 'Success', message: "Company members", data: companyUsers})
+        }
+        catch(err){
+            errHandler(err, res)
+        }
+
+    },
+    setUserCompany: async (req, res) =>{
+
+        const userId = req.params.userId
+        const companyId = req.params.companyId
+
+        try{
+            const company = await companyModel.findOne({_id:companyId})
+            const user = await userModel.findById(userId)
+
+            if(!user) return res.status(404).json({status: 'Failed', message:'User not found',  data: null })
+            if(!company) return res.status(404).json({status: 'Failed', message:'Company not found',  data: null })
+
+            company.users = company.users.concat(user)
+            user.company = company
+
+            await company.save()
+            await user.save();
+
+            res.status(200).json({status: 'Success', message: 'User Company Updated', data: company})
+        }
+        catch(err){
+            errHandler(err, res)
+        }
+
+    },
+    setUserTeam: async (req, res) => {
+
+        const userId = req.params.userId
+        const teamId = req.params.teamId
+
+        try{
+            const team = await teamModel.findOne({_id:teamId})
+            const user = await userModel.findById(userId)
+
+            if(!user) return res.status(404).json({status: 'Failed', message:'User not found',  data: null })
+            if(!team) return res.status(404).json({status: 'Failed', message:'Team not found',  data: null })
+
+            team.users = team.users.concat(user)
+            user.team = team
+
+            await team.save()
+            await user.save();
+
+            res.status(200).json({status: 'Success', message: 'User Team Updated', data: team})
         }
         catch(err){
             errHandler(err, res)

@@ -21,6 +21,9 @@ const openApiDocumentation = {
         },
         {
             name: 'CRUD Operations'
+        },
+        {
+            name: 'Company CRUD Operations'
         }
 
     ],
@@ -34,16 +37,15 @@ const openApiDocumentation = {
                 description: 'Add Service User',
                 operationId: 'addServiceUser',
                 security: [],
-                parameters: [
-                    {
-                        name: 'email',
-                        in: 'body',
-                        schema: {
-                            type: 'json',
-                        },
-                        required: true,
+                requestBody:{
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/ServiceUser'
+                            }
+                        }
                     }
-                ],
+                },
                 responses: {
                     '200': {
                         description: 'Success',
@@ -141,9 +143,7 @@ const openApiDocumentation = {
                         },
                     }
                 }
-            }
-        },
-        '/v1/users': {
+            },
             post:{
                 tags: ['CRUD Operations'],
                 description: 'Add new User',
@@ -231,36 +231,6 @@ const openApiDocumentation = {
                     }
                 }
             },
-            // put: {
-            //     tags: ['CRUD Operations'],
-            //     description: 'Update User',
-            //     operationId: 'updateUser',
-            //     parameters: [
-            //         {
-            //             name: 'id',
-            //             in: 'path',
-            //             schema: {
-            //                 type: 'string',
-            //             },
-            //             required: true,
-            //         }
-            //     ],
-            //     responses: {
-            //         '200': {
-            //             description: 'Success',
-            //             content: {
-            //                 'application/json': {
-            //                     schema: {
-            //                         type: 'string'
-            //                     },
-            //                 },
-            //             },
-            //         },
-            //         '400': {
-            //             description: 'Bad Request',
-            //         }
-            //     }
-            // },
             get: {
                 tags: ['CRUD Operations'],
                 description: 'Get a User',
@@ -1083,7 +1053,507 @@ const openApiDocumentation = {
                     }
                 }
             },
+        '/v1/companies':{
+            post:{
+                tags: ['Company CRUD Operations'],
+                description: 'Create New Company',
+                operationId: 'createNewCompany',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                requestBody: {
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Company'
+                            }
+                        }
+                    },
+                    required: true
+                },
+                parameters: [],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+            get:{
+                tags: ['Company CRUD Operations'],
+                description: 'Get All Companies',
+                operationId: 'getAllCompanies',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            }
         },
+        '/v1/companies/{id}': {
+            get:{
+                tags: ['Company CRUD Operations'],
+                description: 'Get A Company By Id',
+                operationId: 'getCompanyById',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            }
+        },
+        '/v1/companies/{id}/users': {
+            get:{
+                tags: ['Company CRUD Operations'],
+                description: 'Get A Company Users',
+                operationId: 'getCompanyUsers',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            }
+        },
+        'v1/companies/{id}/teams':{
+            post:{
+                tags: ['Company CRUD Operations'],
+                description: 'Create New Team',
+                operationId: 'createNewTeam',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                requestBody: {
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Team'
+                            }
+                        }
+                    },
+                    required: true
+                },
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+        },
+        '/v1/companies/teams/{teamId}/users/{userId}':{
+            post:{
+                tags: ['Company CRUD Operations'],
+                description: 'Add User to A Team',
+                operationId: 'addUserToTeam',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'teamId',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    },
+                    {
+                        name: 'userId',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+        },
+        '/v1/companies/teams/{id}/users':{
+            get:{
+                tags: ['Company CRUD Operations'],
+                description: 'Get Team Members',
+                operationId: 'getTeamMembers',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    },
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+        },
+        '/v1/companies/{id}/teams':{
+            get:{
+                tags: ['Company CRUD Operations'],
+                description: 'Get Teams Under A Company',
+                operationId: 'getCompanyTeams',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    },
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+        },
+        '/v1/companies/teams/users/{id}':{
+            get:{
+                tags: ['Company CRUD Operations'],
+                description: "Get A User's Team",
+                operationId: 'getUsersTeam',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+        },
+        '/v1/companies/user/{id}':{
+            get:{
+                tags: ['Company CRUD Operations'],
+                description: "Get A User's Company",
+                operationId: 'getUsersCompany',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'id',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            },
+        },
+        '/v1/companies/{companyId}/users/{userId}':{
+            post:{
+                tags: ['Company CRUD Operations'],
+                description: 'Add User to A Company',
+                operationId: 'addUserToCompany',
+                security: [
+                    {
+                        'bearerAuth': {}
+                    }
+                ],
+                parameters: [
+                    {
+                        name: 'companyId',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    },
+                    {
+                        name: 'userId',
+                        in: 'path',
+                        schema: {
+                            type: 'string',
+                        },
+                        required: true,
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'Success',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Bad Request',
+                        content: {
+                            'application/json': {
+                                schema: {
+                                    $ref: '#/components/schemas/Response'
+                                },
+                            },
+                        },
+                    }
+                }
+            }
+        }
+    },
             
         
     components: {
@@ -1120,10 +1590,37 @@ const openApiDocumentation = {
                     }
                 }
             },
+            Company:{
+                type: 'object',
+                properties:{
+                    name:{
+                        type: 'string',
+                        description: 'Company Name'
+                    }
+                }
+            },
+            Team:{
+                type: 'object',
+                properties:{
+                    name:{
+                        type: 'string',
+                        description: 'Team Name'
+                    }
+                }
+            },
             Users: {
                 type: 'array',
                 items: {
                     $ref: '#/components/schemas/User'
+                }
+            },
+            ServiceUser:{
+                type: 'object',
+                properties:{
+                    email:{
+                        type: 'string',
+                        description: 'User Email'
+                    }
                 }
             },
             Response: {
