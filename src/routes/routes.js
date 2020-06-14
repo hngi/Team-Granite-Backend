@@ -137,5 +137,9 @@ router.get('/companies/team/:id/users', auth, company.getTeamMembers);
 //done
 router.get('/companies/:id/teams', auth, company.getAllTeams);
 
+//Handle 404 Errors
+router.all('*', (req, res) => {
+    res.status(404).json({ status: 404, data: "404 - Page Not Found" });
+});
 
 module.exports= router;
